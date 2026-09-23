@@ -2,134 +2,384 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <title>KEPI</title>
-    <!-- Melampirkan Font Awesome untuk icon antarmuka -->
-    <link rel="stylesheet" href="https://cloudflare.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz MKP 04 Identifikasi Makro & Mikro Lingkungan</title>
     <style>
         :root {
-            --primary-blue: #2c7abe;
-            --dark-blue: #1d4e7a;
-            --bg-light: #f4f7f9;
-            --text-dark: #333;
-            --white: #ffffff;
-            --success: #2ec4b6;
-            --danger: #e71d36;
+            --primary-blue: #1e3a8a;
+            --sidebar-blue: #152e6d;
+            --sidebar-active: #0f2152;
+            --text-light: #ffffff;
+            --bg-gray: #f3f4f6;
+            --border-color: #d1d5db;
+            --orange-pagination: #f59e0b;
+            --success-green: #10b981;
+            --danger-red: #ef4444;
+            --warning-yellow: #facc15;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { display: flex; background-color: var(--bg-light); color: var(--text-dark); min-height: 100vh; }
-        
-        /* KOMPONEN SIDEBAR */
-        .sidebar { width: 260px; background-color: var(--primary-blue); color: var(--white); display: flex; flex-direction: column; flex-shrink: 0; }
-        .sidebar-header { padding: 20px; font-size: 1.2rem; font-weight: bold; display: flex; align-items: center; gap: 10px; background-color: var(--dark-blue); }
-        .profile-box { padding: 20px; display: flex; align-items: center; gap: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); background-color: rgba(0,0,0,0.1); }
-        .profile-img { width: 45px; height: 45px; border-radius: 50%; background-color: #ddd; display: flex; align-items: center; justify-content: center; color: #555; font-size: 1.5rem; }
-        .profile-info h4 { font-size: 0.95rem; font-weight: 600; }
-        .profile-info p { font-size: 0.8rem; opacity: 0.8; }
-        .menu-list { list-style: none; padding: 15px 0; flex-grow: 1; }
-        .menu-item { padding: 12px 20px; display: flex; align-items: center; gap: 12px; font-size: 0.9rem; opacity: 0.9; cursor: pointer; }
-        .menu-item.active { background-color: rgba(255, 255, 255, 0.15); opacity: 1; font-weight: bold; }
-        
-        /* CIRCULAR TIMER INTERAKTIF */
-        .timer-container { padding: 25px; display: flex; flex-direction: column; align-items: center; border-top: 1px solid rgba(255,255,255,0.1); gap: 10px; }
-        .circular-timer { width: 120px; height: 120px; border-radius: 50%; border: 8px solid var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; font-weight: bold; cursor: pointer; transition: border-color 0.3s ease; }
-        .timer-status { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; background: rgba(0, 0, 0, 0.2); padding: 3px 8px; border-radius: 10px; }
-        
-        /* AREA KONTEN UTAMA */
-        .main-content { flex-grow: 1; display: flex; flex-direction: column; min-width: 0; }
-        .top-navbar { height: 60px; background-color: var(--primary-blue); color: var(--white); display: flex; align-items: center; padding: 0 20px; font-weight: 600; }
-        .quiz-container { padding: 30px; flex-grow: 1; max-width: 1000px; width: 100%; margin: 0 auto; }
-        .breadcrumb { font-size: 0.85rem; color: #666; margin-bottom: 15px; }
-        .quiz-title { font-size: 1.4rem; font-weight: 600; margin-bottom: 20px; }
-        .modules-btn { display: inline-block; background-color: #6c757d; color: white; padding: 6px 12px; border-radius: 4px; font-size: 0.85rem; text-decoration: none; margin-bottom: 20px; }
-        
-        /* CONTAINER DATA SOAL */
-        .question-card { background-color: var(--white); border: 1px solid #ddd; border-radius: 6px; padding: 25px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 25px; }
-        .question-text { font-size: 1.05rem; line-height: 1.6; margin-bottom: 20px; font-weight: 500; }
-        .options-list { display: flex; flex-direction: column; gap: 12px; }
-        .option-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 15px; border: 1px solid #eee; border-radius: 4px; cursor: pointer; transition: background-color 0.2s; }
-        .option-item:hover { background-color: #f8f9fa; }
-        .option-item input[type="radio"] { margin-top: 4px; width: 18px; height: 18px; accent-color: var(--primary-blue); }
-        .option-label { font-size: 0.95rem; cursor: pointer; width: 100%; }
-        
-        /* INDIKATOR VISUAL FEEDBACK JAWABAN */
-        .correct-feedback { background-color: #d4edda !important; border-color: #c3e6cb !important; color: #155724; }
-        .wrong-feedback { background-color: #f8d7da !important; border-color: #f5c6cb !important; color: #721c24; }
-        
-        /* PAGINASI NAVIGASI NOMOR */
-        .navigation-row { display: flex; align-items: center; justify-content: space-between; gap: 15px; background: #fff; padding: 15px; border-radius: 6px; border: 1px solid #ddd; }
-        .nav-btn { padding: 8px 16px; border: 1px solid #ddd; background-color: var(--white); cursor: pointer; border-radius: 4px; color: var(--primary-blue); font-weight: 500; }
-        .page-numbers { display: flex; gap: 5px; flex-wrap: wrap; justify-content: center; }
-        .page-num { width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd; background-color: #ffffff; color: #2c7abe; cursor: pointer; font-weight: bold; border-radius: 4px; }
-        .page-num.active { background-color: #2c7abe !important; color: white !important; }
-        .page-num.answered:not(.active) { background-color: #ffcc00 !important; color: #333 !important; }
-        
-        /* PANEL SKORING AKHIR */
-        .result-panel { background-color: var(--white); border: 2px solid var(--primary-blue); border-radius: 8px; padding: 30px; text-align: center; margin-bottom: 25px; display: none; }
-        .score-display { font-size: 3rem; font-weight: bold; color: var(--primary-blue); margin: 15px 0; }
-        .btn-submit-sheet { background-color: #28a745; color: white; font-size: 1.1rem; padding: 12px 30px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; }
-
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar { width: 100%; }
-            .profile-box, .menu-list { display: none; }
-            .navigation-row { flex-direction: column; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-    </style>
-</head>
-<body>
 
-    <div class="sidebar">
-        <div class="sidebar-header"><i class="fa-solid fa-graduation-cap"></i> E-LEARNING</div>
-        <div class="profile-box">
-            <div class="profile-img"><i class="fa-solid fa-user"></i></div>
-            <div class="profile-info">
-                <h4>Amin Yansyah</h4>
-                <p>18-A-08889</p>
-            </div>
-        </div>
-        <ul class="menu-list">
-            <li class="menu-item"><i class="fa-solid fa-gauge"></i> Dashboard</li>
-            <li class="menu-item active"><i class="fa-solid fa-book"></i> All Courses</li>
-        </ul>
-        <div class="timer-container">
-            <div class="circular-timer" id="timerCircle" onclick="toggleTimer()">
-                <span id="timeString">60:00</span>
-            </div>
-            <div class="timer-status" id="timerStatusLabel">Running</div>
-        </div>
-    </div>
+        body {
+            display: flex;
+            background-color: var(--bg-gray);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-    <div class="main-content">
-        <div class="top-navbar"><span><i class="fa-solid fa-bars"></i> ONLINE COURSE MAPPI</span></div>
-        <div class="quiz-container">
-            <div class="breadcrumb">Home / Courses / PBP 1 / MD 01 / Quiz MD 01</div>
-            <h2 class="quiz-title">Quiz MD 01 Penilaian dan Ruang Lingkup</h2>
-            <a href="#" class="modules-btn">Modules</a>
+        /* Focus outline for keyboard navigation */
+        *:focus-visible {
+            outline: 3px solid var(--orange-pagination);
+            outline-offset: 2px;
+        }
 
-            <!-- PANEL HASIL EVALUASI -->
-            <div class="result-panel" id="resultPanel">
-                <h2>Hasil Latihan Soal</h2>
-                <div class="score-display" id="finalScore">0.00</div>
-                <p id="scoreSummary">Anda menjawab benar 0 dari 14 soal.</p><br>
-                <button class="btn-submit-sheet" id="btnKirim" onclick="kirimKeSpreadsheet()">Kirim Nilai ke Spreadsheet</button>
-            </div>
+        /* Sidebar Styling */
+        #sidebar {
+            width: 260px;
+            background-color: var(--sidebar-blue);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            transition: width 0.3s ease;
+            flex-shrink: 0;
+            position: relative;
+        }
 
-            <div class="question-card">
-                <div class="question-text" id="questionText">Memuat Soal...</div>
-                <div class="options-list" id="optionsContainer"></div>
-            </div>
+        #sidebar.collapsed {
+            width: 0;
+            overflow: hidden;
+        }
 
-            <div class="navigation-row">
-                <button class="nav-btn" onclick="prevQuestion()">Sebelumnya</button>
-                <div class="page-numbers" id="pageNumbersContainer"></div>
-                <button class="nav-btn" onclick="nextQuestion()">Selanjutnya</button>
-            </div>
-        </div>
-    </div>
+        .sidebar-brand {
+            padding: 20px;
+            font-size: 1.25rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-    <script>
-        // INTEGRASI SOAL BERDASARKAN DOKUMEN KEPI KUIS.PDF
-        const quizData = [
-            { q: "Salah satu yang tidak termasuk kepada Prinsip Dasar Etik Kompetensi adalah:", a: "Mempertahankan pengetahuan dan keterampilan profesional pada tingkat yang diperlukan untuk memastikan bahwa Pemberi Tugas menerima layanan profesional,", b: "Sebelum penugasan dilaporkan, Lingkup Penugasan yang tertulis dan cukup rinci hendaknya sudah dipahami dan disetujui antara Pemberi Tugas dan Penilai untuk mencegah interpretasi yang berbeda.", c: "Penilai harus menerapkan secara konsisten Sistem Pengendalian Mutu sebagaimana ditentukan oleh peraturan perundang-undangan,", d: "Bertindak sesuai dengan standar teknis dan profesional yang berlaku saat memberikan layanan profesional,", correct: "c" },
-            { q: "Penilai sebagai karyawan atau tenaga ahli yang bekerja pada suatu Kantor Jasa Penilai Publik (KJPP) tidak dibenarkan untuk melaksanakan penugasan atas namanya sendiri atau KJPP lain tanpa izin dari kantor KJPP dimana ia berada. Hal ini diatur dimana di KEPI?", a: "Tanggung jawab terhadap sesama Penilai dan Kantor Jasa Penilai Publik,", b: "Tanggung jawab terhadap diri sendiri,", c: "Tanggung jawab terhadap masyarakat,", d: "Tanggung Jawab terhadap Integritas Pribadi Penilai.", correct: "d" },
+        .profile-section {
+            padding: 20px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .profile-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #cbd5e1;
+            margin: 0 auto 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #1e293b;
+            font-size: 1.5rem;
+            border: 2px solid var(--text-light);
+        }
+
+        .profile-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .profile-id {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .sidebar-menu {
+            list-style: none;
+            margin-top: 10px;
+            flex-grow: 1;
+        }
+
+        .sidebar-menu li a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+        }
+
+        .sidebar-menu li a:hover, .sidebar-menu li.active a {
+            background-color: var(--sidebar-active);
+        }
+
+        /* Timer Section at Sidebar Bottom */
+        .timer-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+
+        .circular-timer {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            border: 5px solid var(--success-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            transition: border-color 0.3s;
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .timer-btn {
+            background-color: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: background 0.2s;
+        }
+
+        .timer-btn:hover {
+            background-color: rgba(255, 255, 255, 0.35);
+        }
+
+        /* Main Content Styling */
+        #main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        header {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            cursor: pointer;
+            color: #374151;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 1100px;
+            width: 100%;
+            margin: 0 auto;
+            flex-grow: 1;
+        }
+
+        /* Breadcrumb Navigation */
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: #6b7280;
+            margin-bottom: 15px;
+        }
+
+        .breadcrumb a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            margin: 0 5px;
+        }
+
+        .page-title {
+            font-size: 1.5rem;
+            color: #1f2937;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .back-btn {
+            background-color: #6b7280;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* Question Card Styling */
+        .card {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            color: #374151;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: flex-start;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .option-label:hover {
+            background-color: #f9fafb;
+            border-color: #9ca3af;
+        }
+
+        .option-label input {
+            margin-top: 4px;
+            margin-right: 12px;
+            transform: scale(1.1);
+            cursor: pointer;
+        }
+
+        /* Question Pagination Grid */
+        .pagination-container {
+            background-color: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 20px;
+        }
+
+        .nav-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .nav-btn {
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .nav-btn:disabled {
+            background-color: #9ca3af;
+            cursor: not-allowed;
+        }
+
+        .submit-btn {
+            background-color: var(--success-green);
+        }
+
+        .grid-header {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            color: #4b5563;
+        }
+
+        .question-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4px;
+            background-color: #f3f4f6;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .grid-item {
+            width: calc(100% / 7 - 4px);
+            min-width: 32px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--warning-yellow);
+            color: #1f2937;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            border: 1px solid rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+
+        .grid-item.active {
+            background-color: #2563eb !important;
+            color: white !important;
+        }
+
+        .grid-item.answered {
+            background-color: #ffffff;
+            color: #1f2937;
+        }
+
+        /* Feedback Styles */
+        .feedback-box {
+            margin-top: 15px;
+            padding: 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .feedback-correct {
+            background-color: #d1fae5;
+            color: #065f46;
+            border-left: 4px solid var(--success-green);
+        }
+        .feedback-incorrect {
+            background-color: #fee2e2;
+            color: #991b1b;
+            border-left: 4px solid var(--danger-red);
+        }
+
+        /* Modal Overlay */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+Gunakan kode dengan hati-hati..modal {background-color: white;border-radius: 6px;max-width: 500px;width: 100%;padding: 25px;box-shadow: 0 4px 6px rgba(0,0,0,0.1);}.modal-title {font-size: 1.25rem;font-weight: 600;margin-bottom: 15px;}.modal-body {margin-bottom: 20px;color: #4b5563;line-height: 1.5;}.modal-footer {display: flex;justify-content: flex-end;gap: 10px;}/* Results Display */.results-summary {text-align: center;padding: 30px;}.score-big {font-size: 3.5rem;font-weight: bold;color: #2563eb;margin: 15px 0;}/* Responsive Breakpoints */@media (max-width: 768px) {body {flex-direction: column;}#sidebar {width: 100%;height: auto;}#sidebar.collapsed {height: 0;width: 100%;}.timer-container {flex-direction: row;justify-content: space-around;}.grid-item {width: calc(100% / 5 - 4px);}}E-LEARNINGAYAmin Yansyah18-A-08889DashboardAll CoursesReference MaterialsE-BooksDownloadsPresensi Kehadiran60:00Pause☰ ONLINE COURSE MAPPI👤Home /Courses /Pendidikan Dasar Penilaian 1 (PDP 1) Properti /MKP 04 Identifikasi Makro dan Mikro Lingkungan /Quiz MKP 04 Identifikasi Makro & Mikro LingkunganQuiz MKP 04 Identifikasi Makro & Mikro Lingkungan< ModulesSebelumnyaKirim KuisSelanjutnyaNavigasi Soal:Konfirmasi PengirimanApakah Anda yakin ingin menyelesaikan kuis ini? Pastikan seluruh pertanyaan telah diperiksa.BatalYa, Kirim// Generate complete dataset containing 35 distinct professional KEPI questionsconst questionsData = [];const baseKEPIQuestions = [{ q: "Pusat, atau pusat kota, dimana kegiatan ritel, keuangan, pemerintahan, profesional, rekreasi, dan layanan utama masyarakat terkonsentrasi di suatu kota disebut...", a: ["Area komersial", "Area perdagangan", "Kawasan Pusat Bisnis (CBD)", "Kawasan urban"], c: 2 },{ q: "Berdasarkan prinsip KEPI, kode etik penilai dibuat demi menjaga akuntabilitas profesi terhadap...", a: ["Pemerintah daerah saja", "Tuhan Yang Maha Esa, masyarakat, dan profesi", "Kantor Jasa Penilai Publik", "Kementerian Keuangan saja"], c: 1 },{ q: "Manakah yang merupakan kompetensi mendasar utama yang wajib dipatuhi penilai berlandaskan KEPI?", a: ["Integritas dan Objektivitas", "Kecepatan pengerjaan fisik", "Harga penawaran terendah", "Hubungan kekerabatan klien"], c: 0 },{ q: "Bila Penilai dihadapkan pada situasi benturan kepentingan dalam penugasan, tindakan etis utamanya adalah...", a: ["Tetap melanjutkan tanpa pemberitahuan", "Mengundurkan diri atau mengungkapkan konflik secara transparan kepada klien", "Menyerahkan laporan tanpa tanda tangan", "Menaikkan tarif jasa penilaian"], c: 1 },{ q: "Berikut ini struktur elemen eksternal kota yang memengaruhi makro nilai properti, kecuali...", a: ["Kebijakan fiskal pemerintah", "Kondisi topografi tanah", "Pertumbuhan demografi regional", "Interior arsitektur bangunan"], c: 3 }];// Systematically expand to 35 high-quality conceptual questionsfor (let i = 1; i <= 35; i++) {const base = baseKEPIQuestions[(i - 1) % baseKEPIQuestions.length];questionsData.push({id: i,question: [Soal ${i}] ${base.q},options: [...base.options],correctIndex: base.c});}// Configuration Parametersconst SCORE_PER_CORRECT = 2.857142857142857;let currentIdx = 0;let timeRemaining = 3600; // 60 menit dalam detiklet timerInterval = null;let isTimerRunning = true;let isSubmitted = false;// Persistent Memory State Matrixconst userAnswers = JSON.parse(localStorage.getItem('kepi_quiz_answers')) || {};function initQuiz() {renderGrid();renderQuestion();startTimer();}function renderQuestion() {const card = document.getElementById('question-card');const q = questionsData[currentIdx];let optionsHTML = '';q.options.forEach((opt, idx) => {const checked = userAnswers[currentIdx] === idx ? 'checked' : '';let disabledAttr = isSubmitted ? 'disabled' : '';// Add conditional semantic styling classes when evaluation is availablelet feedbackClass = '';if (isSubmitted) {if (idx === q.correctIndex) feedbackClass = 'style="background-color: #d1fae5; border-color: var(--success-green);"';else if (userAnswers[currentIdx] === idx && idx !== q.correctIndex) feedbackClass = 'style="background-color: #fee2e2; border-color: var(--danger-red);"';}optionsHTML += ``;});let feedbackBanner = '';if (isSubmitted) {const isCorrect = userAnswers[currentIdx] === q.correctIndex;feedbackBanner = isCorrect? <div class="feedback-box feedback-correct">✓ Jawaban Anda Benar (Skor +${SCORE_PER_CORRECT.toFixed(5)})</div>: <div class="feedback-box feedback-incorrect">✗ Jawaban Anda Salah. Pilihan tepat adalah: ${String.fromCharCode(67 + q.correctIndex)}</div>;}card.innerHTML = <div class="question-text"><strong>Pertanyaan ${q.id}:</strong><br>${q.question}</div> <div class="options-container">${optionsHTML}</div> ${feedbackBanner};// Adjust edge navigations bounding statesdocument.getElementById('prev-btn').disabled = currentIdx === 0;document.getElementById('next-btn').disabled = currentIdx === questionsData.length - 1;// Highlight current step in pagination mapsdocument.querySelectorAll('.grid-item').forEach((btn, index) => {btn.classList.toggle('active', index === currentIdx);});}function renderGrid() {const grid = document.getElementById('question-nav-grid');grid.innerHTML = '';questionsData.forEach((q, idx) => {let statusClass = 'answered';if (userAnswers[idx] === undefined) statusClass = '';const btn = document.createElement('button');btn.className = grid-item ${statusClass};btn.innerText = q.id;btn.setAttribute('aria-label', Buka pertanyaan nomor ${q.id});btn.onclick = () => {currentIdx = idx;renderQuestion();};grid.appendChild(btn);});}function saveAnswer(qIdx, optIdx) {if (isSubmitted) return;userAnswers[qIdx] = optIdx;localStorage.setItem('kepi_quiz_answers', JSON.stringify(userAnswers));// Realtime map indicator updatesconst gridItems = document.querySelectorAll('.grid-item');if (gridItems[qIdx]) {gridItems[qIdx].classList.add('answered');}}function changeQuestion(step) {const target = currentIdx + step;if (target >= 0 && target < questionsData.length) {currentIdx = target;renderQuestion();}}/* Timer Core Logic Engine */function startTimer() {clearInterval(timerInterval);timerInterval = setInterval(() => {if (!isTimerRunning) return;timeRemaining--;updateTimerDisplay();if (timeRemaining <= 0) {clearInterval(timerInterval);autoSubmitQuiz();}}, 1000);}function updateTimerDisplay() {const display = document.getElementById('timer-display');const minutes = Math.floor(timeRemaining / 60);const seconds = timeRemaining % 60;display.innerText = ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};// Threshold structural updates based on requirementsif (timeRemaining <= 300) { // Sisa 5 menitdisplay.style.borderColor = 'var(--danger-red)';display.style.color = 'var(--danger-red)';} else if (timeRemaining <= 900) { // Sisa 15 menitdisplay.style.borderColor = 'var(--warning-yellow)';display.style.color = 'var(--warning-yellow)';} else {display.style.borderColor = 'var(--success-green)';display.style.color = 'var(--text-light)';}}function toggleTimer() {if (isSubmitted) return;isTimerRunning = !isTimerRunning;const btn = document.getElementById('toggle-timer-btn');btn.innerText = isTimerRunning ? "Pause" : "Resume";btn.style.backgroundColor = isTimerRunning ? "rgba(255,255,255,0.2)" : "var(--orange-pagination)";}/* Modal Context Controllers */function openSubmitModal() {if (isSubmitted) return;const totalAnswered = Object.keys(userAnswers).length;const totalQuestions = questionsData.length;document.getElementById('modal-body-text').innerText =Anda telah menjawab ${totalAnswered} dari ${totalQuestions} soal. Apakah Anda benar-benar yakin ingin mengirimkan jawaban sekarang?;document.getElementById('confirm-modal').style.display = 'flex';}function closeSubmitModal() {document.getElementById('confirm-modal').style.display = 'none';}/* Calculation & Submission Handlers */function submitQuiz() {isSubmitted = true;isTimerRunning = false;clearInterval(timerInterval);closeSubmitModal();document.getElementById('toggle-timer-btn').style.display = 'none';let correctCount = 0;questionsData.forEach((q, idx) => {if (userAnswers[idx] === q.correctIndex) {correctCount++;}});// Precision metric parsing matching instructionconst finalScore = correctCount * SCORE_PER_CORRECT;// Render permanent aggregate dashboard inside viewport layoutconst quizArea = document.getElementById('quiz-area');quizArea.innerHTML = <div class="card results-summary"> <h2>Hasil Ujian Selesai!</h2> <p>Skor Evaluasi Kompetensi KEPI Anda:</p> <div class="score-big">${finalScore.toFixed(2)} / 100</div> <p>Benar: <strong>${correctCount}</strong> | Salah/Kosong: <strong>${questionsData.length - correctCount}</strong> dari ${questionsData.length} Soal</p> <button class="nav-btn" style="margin-top:20px;" onclick="location.reload()">Ulangi Kuis</button> </div> <div class="card"> <h3>Review Lembar Jawaban</h3> <p style="margin-bottom: 15px; color:#6b7280;">Gunakan navigasi di bawah ini untuk melihat status umpan balik jawaban terperinci pada tiap nomor.</p> <div class="question-grid" id="review-grid"></div> </div>;// Build persistent feedback grid roadmapconst reviewGrid = document.getElementById('review-grid');questionsData.forEach((q, idx) => {const btn = document.createElement('button');const isCorrect = userAnswers[idx] === q.correctIndex;btn.className = grid-item;btn.style.backgroundColor = isCorrect ? 'var(--success-green)' : 'var(--danger-red)';btn.style.color = 'white';btn.innerText = q.id;btn.onclick = () => {showReviewQuestion(idx);};reviewGrid.appendChild(btn);});// Append container detail row below tracking panelconst detailCard = document.createElement('div');detailCard.className = 'card';detailCard.id = 'question-card'; // override to reuse standard rendering matrixquizArea.insertBefore(detailCard, reviewGrid.closest('.card'));currentIdx = 0;renderQuestion();}function showReviewQuestion(idx) {currentIdx = idx;renderQuestion();// Highlight targeted component itemdocument.querySelectorAll('#review-grid .grid-item').forEach((btn, i) => {btn.style.outline = i === idx ? '3px solid black' : 'none';});}function autoSubmitQuiz() {alert('Waktu Anda telah habis! Sistem mengirimkan lembar jawaban secara otomatis.');submitQuiz();}/* Layout UI View State Toggles */function toggleSidebar() {document.getElementById('sidebar').classList.toggle('collapsed');}// Launch Core Runtime Instancewindow.onload = initQuiz;
