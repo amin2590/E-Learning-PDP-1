@@ -1,0 +1,373 @@
+html<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz MD 01 Penilaian dan Ruang Lingkup</title>
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --primary-blue: #2c7abe;
+            --dark-blue: #1d4e7a;
+            --bg-light: #f4f7f9;
+            --text-dark: #333;
+            --white: #ffffff;
+            --success: #2ec4b6;
+            --danger: #e71d36;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--dark-blue);
+        }
+
+        .profile-box {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background-color: rgba(0,0,0,0.1);
+        }
+
+        .profile-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 1.5rem;
+        }
+
+        .profile-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .profile-info p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 15px 0;
+            flex-grow: 1;
+        }
+
+        .menu-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        .menu-item.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            opacity: 1;
+            font-weight: bold;
+        }
+
+        /* TIMER CONTAINER */
+        .timer-container {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            gap: 10px;
+        }
+
+        .circular-timer {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 8px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .timer-status {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 3px 8px;
+            border-radius: 10px;
+        }
+
+        /* MAIN CONTENT */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .top-navbar {
+            height: 60px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-weight: 600;
+            justify-content: space-between;
+        }
+
+        .quiz-container {
+            padding: 30px;
+            flex-grow: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .quiz-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .modules-btn {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        /* QUESTION CARD */
+        .question-card {
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .option-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .option-item input[type="radio"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-blue);
+        }
+
+        .option-label {
+            font-size: 0.95rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .correct-feedback {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+            color: #155724;
+        }
+
+        .wrong-feedback {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+            color: #721c24;
+        }
+
+        /* NAVIGATION BAR & PAGINATION */
+        .navigation-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background-color: var(--white);
+            cursor: pointer;
+            border-radius: 4px;
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .page-numbers {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+        }
+
+        .page-num {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            background-color: #4da3ff; /* Standar default biru cerah */
+            color: white;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .page-num.active {
+            background-color: #0056b3 !important;
+            border-color: #004085;
+        }
+
+        .page-num.answered:not(.active) {
+            background-color: #ffcc00 !important; /* Kuning jika sudah terisi (seperti gambar asli) */
+            color: #333;
+        }
+
+        /* RESULT SUMMARY */
+        .result-panel {
+            background-color: var(--white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            display: none;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 15px 0;
+        }
+
+        .btn-submit-sheet {
+            background-color: #28a745;
+            color: white;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .profile-box, .menu-list { display: none; }
+            .navigation-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <i class="fa-solid fa-graduation-cap"></i> E-LEARNING
+        </div>
+        <div class="profile-box">
+            <div class="profile-img"><i class="fa-solid fa-user"></i></div>
+            <div class="profile-info">
+                <h4>Amin Yansyah</h4>
+                <p>18-A-08889</p>
+            </div>
+        </div>
+        <ul class="menu-list">
+            <li class="menu-item"><i class="fa-solid fa-gauge"></i> Dashboard</li>
+            <li class="menu-item active"><i class="fa-solid fa-book"></i> All Courses</li>
+            <li class="menu-item"><i class="fa-solid fa-download"></i> Downloads</li>
+        </ul>
+        <div class="timer-container">
+            <div class="circular-timer" id="timerCircle" onclick="toggleTimer()">
+                <span id="timeString">60:00</span>
+            </div>
+            <div class="timer-status" id="timerStatusLabel">Running</div>
+        </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main-content">
+        <div class="top-navbar">
+            <span><i class="fa-solid fa-bars"></i> ONLINE COURSE MAPPI</span>
+        </div>
+
+Gunakan kode dengan hati-hati.Home / Courses / PBP 1 / MD 01 / Quiz MD 01Quiz MD 01 Penilaian dan Ruang LingkupModulesHasil Latihan Soal0.00Anda menjawab benar 0 dari 14 soal.Kirim Nilai ke SpreadsheetMemuat soal...SebelumnyaSelanjutnyaconst quizData = [{q: "Salah satu yang tidak termasuk kepada Prinsip Dasar Etik Kompetensi adalah:",a: "Mempertahankan pengetahuan dan keterampilan profesional pada tingkat yang diperlukan untuk memastikan bahwa Pemberi Tugas menerima layanan profesional,",b: "Sebelum penugasan dilaporkan, Lingkup Penugasan yang tertulis dan cukup rinci hendaknya sudah dipahami dan disetujui antara Pemberi Tugas dan Penilai untuk mencegah interpretasi yang berbeda.",c: "Penilai harus menerapkan secara konsisten Sistem Pengendalian Mutu sebagaimana ditentukan oleh peraturan perundang-undangan,",d: "Bertindak sesuai dengan standar teknis dan profesional yang berlaku saat memberikan layanan profesional,",correct: "c"},{q: "Penilai sebagai karyawan atau tenaga ahli yang bekerja pada suatu Kantor Jasa Penilai Publik (KJPP) tidak dibenarkan untuk melaksanakan penugasan atas namanya sendiri atau KJPP lain tanpa izin dari kantor KJPP dimana ia berada. Hal ini diatur dimana di KEPI?",a: "Tanggung jawab terhadap sesama Penilai dan Kantor Jasa Penilai Publik,",b: "Tanggung jawab terhadap diri sendiri,",c: "Tanggung jawab terhadap masyarakat,",d: "Tanggung Jawab terhadap Integritas Pribadi Penilai.",correct: "d"},{q: "Seseorang yang telah lulus ujian sertifikasi di bidang penilaian yang diselenggarakan oleh Asosiasi Profesi Penilai disebut:",a: "Tenaga Penilai,",b: "Penilai Publik,",c: "Penilai Bersertifikat,",d: "Penilai Internal",correct: "c"},{q: "Nilai-nilai atau norma-norma moral yang menjadi pedoman bagi seseorang atau kelompok dalam mengatur perilakunya secara professional disebut:",a: "Etik",b: "Standar Penilaian Indonesia",c: "Kode Etik Penilai Indonesia",d: "Kode Etik",correct: "d"},{q: "Seseorang yang telah lulus pendidikan di bidang penilaian yang diselenggarakan oleh Asosiasi Profesi Penilai disebut:",a: "Penilai Internal",b: "Penilai Publik",c: "Penilai Bersertifikat",d: "Tenaga Penilai",correct: "d"},{q: "Kumpulan etik yang dibuat untuk menjunjung tinggi profesi demi tanggung jawab terhadap profesi, masyarakat dan Ketuhanan Yang Maha Esa.",a: "Standar Penilaian Indonesia",b: "Kode Etik Penilai Indonesia",c: "Etik",d: "Kode Etik",correct: "d"},{q: "Penilai harus mengambil langkah-langkah yang wajar untuk memastikan bahwa staf di bawah pengawasan Penilai dan orang yang memberikan tugas menghormati prinsip kerahasiaan. Pernyataan ini berhubungan dengan:",a: "Kerahasiaan",b: "Tanggung jawab kepada Pemberi Tugas",c: "Ancaman kerahasiaan",d: "Objektifitas",correct: "a"},{q: "Penilai bekerja secara profesional, tidak memihak, tidak memiliki kepentingan terhadap obyek penugasan atau tidak dipengaruhi orang lain. Pernyataan ini termasuk kepada:",a: "Prinsip Etik Prilaku Profesional",b: "Prinsip Etik",c: "Prinsip Etik Objektifitas",d: "Prinsip Etik Integritas",correct: "c"},{q: "Jika Penilai tidak memiliki pengetahuan profesional dan pengalaman yang diperlukan untuk melakukan tugas penilaian yang ditawarkan secara professional, maka Penilai harus:",a: "Tetap dapat dilakukan dengan menggunakan asumsi khusus.",b: "Harus menolak tugas tersebut,",c: "Harus menolak tugas tersebut, kecuali menggunakan bantuan dari luar,",d: "Harus menggunakan bantuan dari luar,",correct: "c"},{q: "Objektifitas mengatur salah satu hal yang disebutkan di bawah ini:",a: "Penilai akan melakukan pemeriksaan dan verifikasi untuk memperoleh keyakinan bahwa data yang digunakan benar.",b: "Menerima suatu penugasan untuk membuat laporan penilaian berdasarkan asumsi pada prasyarat hipotesa yang tidak mungkin dilaksanakan.",c: "Jika tidak ada pencegahan yang memuaskan untuk menghilangkan ancaman objektivitas, Penilai dapat menerima penugasan.",d: "Penilai tidak diperkenankan dengan sengaja salah menafsirkan kualifikasi profesional yang tidak dimilikinya.",correct: "d"},{q: "Penilai wajib membuat arsip data pekerjaan untuk setiap penugasan yang telah diselesaikan dalam suatu arsip yang benar pada kertas (hardcopy) atau dalam bentuk elektronik (softcopy). Ketentuan diatur berhubungan kepada:",a: "Perilaku Profesional",b: "Objektifitas",c: "Dokumentasi",d: "Kompetensi",correct: "c"},{q: "Bila Penilai mendapatkan penugasan untuk objek yang sama dari dua Pemberi Tugas yang berlainan maka hal perlu dilakukan Penilai adalah:",a: "Tetap dapat menerima penugasan tersebut,",b: "Menolak penugasan tersebut,",c: "Penilai boleh menerima penugasan dari salah satu pihak saja, kecuali apabila pihak-pihak menyetujuinya.",d: "Penilai tersebut hanya boleh menerima penugasan dari salah satu pihak saja secara mutlak.",correct: "c"},{q: "Penilai harus menghindari tindakan yang dapat mendiskreditkan profesi. Hal ini termasuk kepada pengaturan:",a: "Ancaman terhadap Pemberi Tugas,",b: "Prinsip Dasar Kerahasiaan.",c: "Tanggung Jawab sesama Penilai,",d: "Prinsip Dasar Etik Perilaku Profesional,",correct: "d"},{q: "Pengawasan penerimaan atau pemberian hadiah, komisi, dan jenis lainnya dalam pelaksanaan jasa penilaian termasuk pelanggaran terhadap:",a: "Tanggung jawab terhadap sesama Penilai dan Kantor Jasa Penilai Publik,",b: "Tanggung jawab terhadap diri sendiri,",c: "Tanggung jawab terhadap masyarakat,",d: "Tanggung Jawab terhadap Integritas Pribadi Penilai.",correct: "d"}];let currentIdx = 0;let userAnswers = new Array(quizData.length).fill(null);let examFinished = false;const BOBOT_SKOR = 2.857142857142857;const SCRIPT_URL = "google.com";let totalSeconds = 60 * 60;let timerInterval = null;let isPaused = false;window.onload = function() {renderPageNumbers();loadQuestion(0);startTimer();};function renderPageNumbers() {const container = document.getElementById("pageNumbersContainer");if(!container) return;container.innerHTML = "";quizData.forEach((_, idx) => {const btn = document.createElement("div");btn.className = "page-num";btn.id = pagenum-${idx};btn.innerText = idx + 1;btn.onclick = () => { saveCurrentAnswer(); loadQuestion(idx); };container.appendChild(btn);});}function loadQuestion(idx) {currentIdx = idx;const item = quizData[idx];document.querySelectorAll(".page-num").forEach((el, i) => {el.classList.remove("active");if(userAnswers[i] !== null) {el.classList.add("answered");} else {el.classList.remove("answered");}});const activePage = document.getElementById(pagenum-${idx});if(activePage) activePage.classList.add("active");document.getElementById("questionText").innerText = ${idx + 1}. ${item.q};const container = document.getElementById("optionsContainer");container.innerHTML = "";const options = ['a', 'b', 'c', 'd'];options.forEach(opt => {const optionWrapper = document.createElement("div");optionWrapper.className = "option-item";optionWrapper.id = wrapper-${opt};const radio = document.createElement("input");radio.type = "radio";radio.name = "quizOption";radio.value = opt;radio.id = opt-${opt};if(userAnswers[idx] === opt) {radio.checked = true;}if(examFinished) {radio.disabled = true;}const label = document.createElement("label");label.className = "option-label";label.htmlFor = opt-${opt};label.innerText = ${opt.toUpperCase()}. ${item[opt]};optionWrapper.appendChild(radio);optionWrapper.appendChild(label);optionWrapper.onclick = () => {if(!examFinished) {radio.checked = true;saveCurrentAnswer();}};container.appendChild(optionWrapper);});if(examFinished) {showFeedbackForCurrentQuestion();}}function saveCurrentAnswer() {const selected = document.querySelector('input[name="quizOption"]:checked');if(selected) {userAnswers[currentIdx] = selected.value;const pageEl = document.getElementById(pagenum-${currentIdx});if(pageEl) pageEl.classList.add("answered");}}function nextQuestion() {saveCurrentAnswer();if(currentIdx < quizData.length - 1) {loadQuestion(currentIdx + 1);} else if(!examFinished) {if(confirm("Apakah Anda yakin ingin menyelesaikan kuis ini?")) {finishQuiz();}}}function prevQuestion() {saveCurrentAnswer();if(currentIdx > 0) {loadQuestion(currentIdx - 1);}}function startTimer() {timerInterval = setInterval(() => {if(!isPaused) {totalSeconds--;updateTimerUI();if(totalSeconds <= 0) {clearInterval(timerInterval);finishQuiz();}}}, 1000);}function updateTimerUI() {const minutes = Math.floor(totalSeconds / 60);const seconds = totalSeconds % 60;document.getElementById("timeString").innerText =${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};const timerCircle = document.getElementById("timerCircle");if(totalSeconds > 15 * 60) {timerCircle.style.borderColor = "#2ec4b6";} else if (totalSeconds <= 15 * 60 && totalSeconds > 5 * 60) {timerCircle.style.borderColor = "#ff9f1c";} else {timerCircle.style.borderColor = "#e71d36";}}function toggleTimer() {if(examFinished) return;isPaused = !isPaused;document.getElementById("timerStatusLabel").innerText = isPaused ? "Paused" : "Running";}function finishQuiz() {saveCurrentAnswer();examFinished = true;clearInterval(timerInterval);document.getElementById("timerStatusLabel").innerText = "Finished";let correctCount = 0;quizData.forEach((item, idx) => {if(userAnswers[idx] === item.correct) correctCount++;});let finalScore = correctCount * BOBOT_SKOR;if(finalScore > 100) finalScore = 100;document.getElementById("finalScore").innerText = finalScore.toFixed(2);document.getElementById("scoreSummary").innerText = Anda menjawab benar ${correctCount} dari ${quizData.length} soal.;document.getElementById("resultPanel").style.display = "block";showFeedbackForCurrentQuestion();window.scrollTo({top: 0, behavior: 'smooth'});}function showFeedbackForCurrentQuestion() {const item = quizData[currentIdx];const selectedAnswer = userAnswers[currentIdx];const correctWrapper = document.getElementById(wrapper-${item.correct});if(correctWrapper) correctWrapper.classList.add("correct-feedback");if(selectedAnswer && selectedAnswer !== item.correct) {const wrongWrapper = document.getElementById(wrapper-${selectedAnswer});if(wrongWrapper) wrongWrapper.classList.add("wrong-feedback");}}function kirimKeSpreadsheet() {const btn = document.getElementById("btnKirim");btn.disabled = true;btn.innerText = "Mengirim...";let correctCount = 0;quizData.forEach((item, idx) => {if(userAnswers[idx] === item.correct) correctCount++;});const skorAkhir = (correctCount * BOBOT_SKOR).toFixed(2);const payload = {nama: "Amin Yansyah",id_peserta: "18-A-08889",skor: skorAkhir,benar: correctCount,salah: quizData.length - correctCount,waktu_sisa: document.getElementById("timeString").innerText};fetch(SCRIPT_URL, {method: "POST",mode: "no-cors",headers: { "Content-Type": "application/json" },body: JSON.stringify(payload)}).then(() => {alert("Nilai sukses terkirim ke Google Spreadsheet!");btn.innerText = "Terkirim ✓";}).catch(() => {alert("Pengiriman selesai diproses.");btn.disabled = false;btn.innerText = "Kirim Nilai ke Spreadsheet";});}
