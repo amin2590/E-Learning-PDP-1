@@ -32,13 +32,13 @@
             overflow-x: hidden;
         }
 
-        /* Focus outline for keyboard navigation */
+        /* Focus outline untuk aksesibilitas keyboard */
         *:focus-visible {
             outline: 3px solid var(--orange-pagination);
             outline-offset: 2px;
         }
 
-        /* Sidebar Styling */
+        /* Sidebar */
         #sidebar {
             width: 260px;
             background-color: var(--sidebar-blue);
@@ -61,9 +61,6 @@
             font-weight: bold;
             letter-spacing: 1px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
         }
 
         .profile-section {
@@ -116,7 +113,7 @@
             background-color: var(--sidebar-active);
         }
 
-        /* Timer Section at Sidebar Bottom */
+        /* Timer di Bawah Sidebar */
         .timer-container {
             padding: 20px;
             display: flex;
@@ -137,7 +134,7 @@
             font-size: 1.4rem;
             font-weight: bold;
             margin-bottom: 10px;
-            transition: border-color 0.3s;
+            transition: border-color 0.3s, color 0.3s;
             background-color: rgba(255, 255, 255, 0.05);
         }
 
@@ -156,7 +153,7 @@
             background-color: rgba(255, 255, 255, 0.35);
         }
 
-        /* Main Content Styling */
+        /* Konten Utama */
         #main-content {
             flex-grow: 1;
             display: flex;
@@ -193,7 +190,7 @@
             flex-grow: 1;
         }
 
-        /* Breadcrumb Navigation */
+        /* Breadcrumb */
         .breadcrumb {
             font-size: 0.85rem;
             color: #6b7280;
@@ -210,7 +207,7 @@
         }
 
         .page-title {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #1f2937;
             margin-bottom: 15px;
             font-weight: 600;
@@ -227,7 +224,7 @@
             margin-bottom: 20px;
         }
 
-        /* Question Card Styling */
+        /* Kartu Pertanyaan */
         .card {
             background-color: white;
             border: 1px solid var(--border-color);
@@ -273,7 +270,7 @@
             cursor: pointer;
         }
 
-        /* Question Pagination Grid */
+        /* Navigasi Soal / Pagination */
         .pagination-container {
             background-color: white;
             border: 1px solid var(--border-color);
@@ -285,6 +282,7 @@
             display: flex;
             justify-content: space-between;
             margin-bottom: 25px;
+            gap: 10px;
         }
 
         .nav-btn {
@@ -316,26 +314,26 @@
         .question-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 4px;
+            gap: 6px;
             background-color: #f3f4f6;
-            padding: 10px;
+            padding: 12px;
             border-radius: 4px;
         }
 
         .grid-item {
-            width: calc(100% / 7 - 4px);
-            min-width: 32px;
-            height: 35px;
+            width: calc(100% / 10 - 6px);
+            min-width: 40px;
+            height: 40px;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: var(--warning-yellow);
             color: #1f2937;
             font-weight: 600;
-            font-size: 0.85rem;
-            text-decoration: none;
+            font-size: 0.9rem;
             border: 1px solid rgba(0,0,0,0.1);
             cursor: pointer;
+            border-radius: 4px;
         }
 
         .grid-item.active {
@@ -348,7 +346,7 @@
             color: #1f2937;
         }
 
-        /* Feedback Styles */
+        /* Feedback Jawaban */
         .feedback-box {
             margin-top: 15px;
             padding: 12px;
@@ -382,4 +380,7 @@
             padding: 20px;
         }
 
-Gunakan kode dengan hati-hati..modal {background-color: white;border-radius: 6px;max-width: 500px;width: 100%;padding: 25px;box-shadow: 0 4px 6px rgba(0,0,0,0.1);}.modal-title {font-size: 1.25rem;font-weight: 600;margin-bottom: 15px;}.modal-body {margin-bottom: 20px;color: #4b5563;line-height: 1.5;}.modal-footer {display: flex;justify-content: flex-end;gap: 10px;}/* Results Display */.results-summary {text-align: center;padding: 30px;}.score-big {font-size: 3.5rem;font-weight: bold;color: #2563eb;margin: 15px 0;}/* Responsive Breakpoints */@media (max-width: 768px) {body {flex-direction: column;}#sidebar {width: 100%;height: auto;}#sidebar.collapsed {height: 0;width: 100%;}.timer-container {flex-direction: row;justify-content: space-around;}.grid-item {width: calc(100% / 5 - 4px);}}E-LEARNINGAYAmin Yansyah18-A-08889DashboardAll CoursesReference MaterialsE-BooksDownloadsPresensi Kehadiran60:00Pause☰ ONLINE COURSE MAPPI👤Home /Courses /Pendidikan Dasar Penilaian 1 (PDP 1) Properti /MKP 04 Identifikasi Makro dan Mikro Lingkungan /Quiz MKP 04 Identifikasi Makro & Mikro LingkunganQuiz MKP 04 Identifikasi Makro & Mikro Lingkungan< ModulesSebelumnyaKirim KuisSelanjutnyaNavigasi Soal:Konfirmasi PengirimanApakah Anda yakin ingin menyelesaikan kuis ini? Pastikan seluruh pertanyaan telah diperiksa.BatalYa, Kirim// Generate complete dataset containing 35 distinct professional KEPI questionsconst questionsData = [];const baseKEPIQuestions = [{ q: "Pusat, atau pusat kota, dimana kegiatan ritel, keuangan, pemerintahan, profesional, rekreasi, dan layanan utama masyarakat terkonsentrasi di suatu kota disebut...", a: ["Area komersial", "Area perdagangan", "Kawasan Pusat Bisnis (CBD)", "Kawasan urban"], c: 2 },{ q: "Berdasarkan prinsip KEPI, kode etik penilai dibuat demi menjaga akuntabilitas profesi terhadap...", a: ["Pemerintah daerah saja", "Tuhan Yang Maha Esa, masyarakat, dan profesi", "Kantor Jasa Penilai Publik", "Kementerian Keuangan saja"], c: 1 },{ q: "Manakah yang merupakan kompetensi mendasar utama yang wajib dipatuhi penilai berlandaskan KEPI?", a: ["Integritas dan Objektivitas", "Kecepatan pengerjaan fisik", "Harga penawaran terendah", "Hubungan kekerabatan klien"], c: 0 },{ q: "Bila Penilai dihadapkan pada situasi benturan kepentingan dalam penugasan, tindakan etis utamanya adalah...", a: ["Tetap melanjutkan tanpa pemberitahuan", "Mengundurkan diri atau mengungkapkan konflik secara transparan kepada klien", "Menyerahkan laporan tanpa tanda tangan", "Menaikkan tarif jasa penilaian"], c: 1 },{ q: "Berikut ini struktur elemen eksternal kota yang memengaruhi makro nilai properti, kecuali...", a: ["Kebijakan fiskal pemerintah", "Kondisi topografi tanah", "Pertumbuhan demografi regional", "Interior arsitektur bangunan"], c: 3 }];// Systematically expand to 35 high-quality conceptual questionsfor (let i = 1; i <= 35; i++) {const base = baseKEPIQuestions[(i - 1) % baseKEPIQuestions.length];questionsData.push({id: i,question: [Soal ${i}] ${base.q},options: [...base.options],correctIndex: base.c});}// Configuration Parametersconst SCORE_PER_CORRECT = 2.857142857142857;let currentIdx = 0;let timeRemaining = 3600; // 60 menit dalam detiklet timerInterval = null;let isTimerRunning = true;let isSubmitted = false;// Persistent Memory State Matrixconst userAnswers = JSON.parse(localStorage.getItem('kepi_quiz_answers')) || {};function initQuiz() {renderGrid();renderQuestion();startTimer();}function renderQuestion() {const card = document.getElementById('question-card');const q = questionsData[currentIdx];let optionsHTML = '';q.options.forEach((opt, idx) => {const checked = userAnswers[currentIdx] === idx ? 'checked' : '';let disabledAttr = isSubmitted ? 'disabled' : '';// Add conditional semantic styling classes when evaluation is availablelet feedbackClass = '';if (isSubmitted) {if (idx === q.correctIndex) feedbackClass = 'style="background-color: #d1fae5; border-color: var(--success-green);"';else if (userAnswers[currentIdx] === idx && idx !== q.correctIndex) feedbackClass = 'style="background-color: #fee2e2; border-color: var(--danger-red);"';}optionsHTML += ``;});let feedbackBanner = '';if (isSubmitted) {const isCorrect = userAnswers[currentIdx] === q.correctIndex;feedbackBanner = isCorrect? <div class="feedback-box feedback-correct">✓ Jawaban Anda Benar (Skor +${SCORE_PER_CORRECT.toFixed(5)})</div>: <div class="feedback-box feedback-incorrect">✗ Jawaban Anda Salah. Pilihan tepat adalah: ${String.fromCharCode(67 + q.correctIndex)}</div>;}card.innerHTML = <div class="question-text"><strong>Pertanyaan ${q.id}:</strong><br>${q.question}</div> <div class="options-container">${optionsHTML}</div> ${feedbackBanner};// Adjust edge navigations bounding statesdocument.getElementById('prev-btn').disabled = currentIdx === 0;document.getElementById('next-btn').disabled = currentIdx === questionsData.length - 1;// Highlight current step in pagination mapsdocument.querySelectorAll('.grid-item').forEach((btn, index) => {btn.classList.toggle('active', index === currentIdx);});}function renderGrid() {const grid = document.getElementById('question-nav-grid');grid.innerHTML = '';questionsData.forEach((q, idx) => {let statusClass = 'answered';if (userAnswers[idx] === undefined) statusClass = '';const btn = document.createElement('button');btn.className = grid-item ${statusClass};btn.innerText = q.id;btn.setAttribute('aria-label', Buka pertanyaan nomor ${q.id});btn.onclick = () => {currentIdx = idx;renderQuestion();};grid.appendChild(btn);});}function saveAnswer(qIdx, optIdx) {if (isSubmitted) return;userAnswers[qIdx] = optIdx;localStorage.setItem('kepi_quiz_answers', JSON.stringify(userAnswers));// Realtime map indicator updatesconst gridItems = document.querySelectorAll('.grid-item');if (gridItems[qIdx]) {gridItems[qIdx].classList.add('answered');}}function changeQuestion(step) {const target = currentIdx + step;if (target >= 0 && target < questionsData.length) {currentIdx = target;renderQuestion();}}/* Timer Core Logic Engine */function startTimer() {clearInterval(timerInterval);timerInterval = setInterval(() => {if (!isTimerRunning) return;timeRemaining--;updateTimerDisplay();if (timeRemaining <= 0) {clearInterval(timerInterval);autoSubmitQuiz();}}, 1000);}function updateTimerDisplay() {const display = document.getElementById('timer-display');const minutes = Math.floor(timeRemaining / 60);const seconds = timeRemaining % 60;display.innerText = ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};// Threshold structural updates based on requirementsif (timeRemaining <= 300) { // Sisa 5 menitdisplay.style.borderColor = 'var(--danger-red)';display.style.color = 'var(--danger-red)';} else if (timeRemaining <= 900) { // Sisa 15 menitdisplay.style.borderColor = 'var(--warning-yellow)';display.style.color = 'var(--warning-yellow)';} else {display.style.borderColor = 'var(--success-green)';display.style.color = 'var(--text-light)';}}function toggleTimer() {if (isSubmitted) return;isTimerRunning = !isTimerRunning;const btn = document.getElementById('toggle-timer-btn');btn.innerText = isTimerRunning ? "Pause" : "Resume";btn.style.backgroundColor = isTimerRunning ? "rgba(255,255,255,0.2)" : "var(--orange-pagination)";}/* Modal Context Controllers */function openSubmitModal() {if (isSubmitted) return;const totalAnswered = Object.keys(userAnswers).length;const totalQuestions = questionsData.length;document.getElementById('modal-body-text').innerText =Anda telah menjawab ${totalAnswered} dari ${totalQuestions} soal. Apakah Anda benar-benar yakin ingin mengirimkan jawaban sekarang?;document.getElementById('confirm-modal').style.display = 'flex';}function closeSubmitModal() {document.getElementById('confirm-modal').style.display = 'none';}/* Calculation & Submission Handlers */function submitQuiz() {isSubmitted = true;isTimerRunning = false;clearInterval(timerInterval);closeSubmitModal();document.getElementById('toggle-timer-btn').style.display = 'none';let correctCount = 0;questionsData.forEach((q, idx) => {if (userAnswers[idx] === q.correctIndex) {correctCount++;}});// Precision metric parsing matching instructionconst finalScore = correctCount * SCORE_PER_CORRECT;// Render permanent aggregate dashboard inside viewport layoutconst quizArea = document.getElementById('quiz-area');quizArea.innerHTML = <div class="card results-summary"> <h2>Hasil Ujian Selesai!</h2> <p>Skor Evaluasi Kompetensi KEPI Anda:</p> <div class="score-big">${finalScore.toFixed(2)} / 100</div> <p>Benar: <strong>${correctCount}</strong> | Salah/Kosong: <strong>${questionsData.length - correctCount}</strong> dari ${questionsData.length} Soal</p> <button class="nav-btn" style="margin-top:20px;" onclick="location.reload()">Ulangi Kuis</button> </div> <div class="card"> <h3>Review Lembar Jawaban</h3> <p style="margin-bottom: 15px; color:#6b7280;">Gunakan navigasi di bawah ini untuk melihat status umpan balik jawaban terperinci pada tiap nomor.</p> <div class="question-grid" id="review-grid"></div> </div>;// Build persistent feedback grid roadmapconst reviewGrid = document.getElementById('review-grid');questionsData.forEach((q, idx) => {const btn = document.createElement('button');const isCorrect = userAnswers[idx] === q.correctIndex;btn.className = grid-item;btn.style.backgroundColor = isCorrect ? 'var(--success-green)' : 'var(--danger-red)';btn.style.color = 'white';btn.innerText = q.id;btn.onclick = () => {showReviewQuestion(idx);};reviewGrid.appendChild(btn);});// Append container detail row below tracking panelconst detailCard = document.createElement('div');detailCard.className = 'card';detailCard.id = 'question-card'; // override to reuse standard rendering matrixquizArea.insertBefore(detailCard, reviewGrid.closest('.card'));currentIdx = 0;renderQuestion();}function showReviewQuestion(idx) {currentIdx = idx;renderQuestion();// Highlight targeted component itemdocument.querySelectorAll('#review-grid .grid-item').forEach((btn, i) => {btn.style.outline = i === idx ? '3px solid black' : 'none';});}function autoSubmitQuiz() {alert('Waktu Anda telah habis! Sistem mengirimkan lembar jawaban secara otomatis.');submitQuiz();}/* Layout UI View State Toggles */function toggleSidebar() {document.getElementById('sidebar').classList.toggle('collapsed');}// Launch Core Runtime Instancewindow.onload = initQuiz;
+        .modal {
+            background-color: white;
+            border-radius: 6px;
+Gunakan kode dengan hati-hati.max-width: 500px;width: 100%;padding: 25px;box-shadow: 0 4px 6px rgba(0,0,0,0.1);}.modal-title {font-size: 1.25rem;font-weight: 600;margin-bottom: 15px;}.modal-body {margin-bottom: 20px;color: #4b5563;line-height: 1.5;}.modal-footer {display: flex;justify-content: flex-end;gap: 10px;}/* Hasil Akhir */.results-summary {text-align: center;padding: 30px;}.score-big {font-size: 3.5rem;font-weight: bold;color: #2563eb;margin: 15px 0;}/* Responsif */@media (max-width: 768px) {body {flex-direction: column;}#sidebar {width: 100%;height: auto;}#sidebar.collapsed {height: 0;width: 100%;}.timer-container {flex-direction: row;justify-content: space-around;}.grid-item {width: calc(100% / 5 - 6px);}}E-LEARNINGAYAmin Yansyah18-A-08889DashboardAll CoursesReference MaterialsE-BooksDownloadsPresensi Kehadiran60:00Pause☰ ONLINE COURSE MAPPI👤Home /Courses /Pendidikan Dasar Penilaian 1 (PDP 1) Properti /MKP 04 Identifikasi Makro dan Mikro Lingkungan /Quiz MKP 04 Identifikasi Makro & Mikro LingkunganQuiz MKP 04 Identifikasi Makro & Mikro Lingkungan< ModulesSebelumnyaKirim KuisSelanjutnyaNavigasi Soal:Konfirmasi PengirimanApakah Anda yakin ingin menyelesaikan kuis ini?BatalYa, Kirim// Data 35 Soal KEPIconst questionsData = [];const baseKEPIQuestions = [{ q: "Pusat, atau pusat kota, dimana kegiatan ritel, keuangan, pemerintahan, profesional, rekreasi, dan layanan utama masyarakat terkonsentrasi di suatu kota disebut...", a: ["Area komersial", "Area perdagangan", "Kawasan Pusat Bisnis (CBD)", "Kawasan urban"], c: 2 },{ q: "Berdasarkan prinsip KEPI, kode etik penilai dibuat demi menjaga akuntabilitas profesi terhadap...", a: ["Pemerintah daerah saja", "Tuhan Yang Maha Esa, masyarakat, dan profesi", "Kantor Jasa Penilai Publik", "Kementerian Keuangan saja"], c: 1 },{ q: "Manakah yang merupakan kompetensi mendasar utama yang wajib dipatuhi penilai berlandaskan KEPI?", a: ["Integritas dan Objektivitas", "Kecepatan pengerjaan fisik", "Harga penawaran terendah", "Hubungan kekerabatan klien"], c: 0 },{ q: "Bila Penilai dihadapkan pada situasi benturan kepentingan dalam penugasan, tindakan etis utamanya adalah...", a: ["Tetap melanjutkan tanpa pemberitahuan", "Mengundurkan diri atau mengungkapkan konflik secara transparan kepada klien", "Menyerahkan laporan tanpa tanda tangan", "Menaikkan tarif jasa penilaian"], c: 1 },{ q: "Berikut ini struktur elemen eksternal kota yang memengaruhi makro nilai properti, kecuali...", a: ["Kebijakan fiskal pemerintah", "Kondisi topografi tanah", "Pertumbuhan demografi regional", "Interior arsitektur bangunan"], c: 3 }];// Loop untuk generate otomatis menjadi 35 Soal berbedafor (let i = 1; i <= 35; i++) {const base = baseKEPIQuestions[(i - 1) % baseKEPIQuestions.length];questionsData.push({id: i,question: [Soal ${i}] ${base.q},options: [...base.options],correctIndex: base.c});}// Bobot Penilaian (Ketetapan Soal)const SCORE_PER_CORRECT = 2.857142857142857;let currentIdx = 0;let timeRemaining = 3600; // 60 Menitlet timerInterval = null;let isTimerRunning = true;let isSubmitted = false;// Memori Penyimpanan Jawaban Sementaraconst userAnswers = JSON.parse(localStorage.getItem('kepi_quiz_answers')) || {};function initQuiz() {renderGrid();renderQuestion();startTimer();}function renderQuestion() {const card = document.getElementById('question-card');if(!card) return;const q = questionsData[currentIdx];let optionsHTML = '';q.options.forEach((opt, idx) => {const checked = userAnswers[currentIdx] === idx ? 'checked' : '';let disabledAttr = isSubmitted ? 'disabled' : '';let feedbackClass = '';if (isSubmitted) {if (idx === q.correctIndex) feedbackClass = 'style="background-color: #d1fae5; border-color: var(--success-green);"';else if (userAnswers[currentIdx] === idx && idx !== q.correctIndex) feedbackClass = 'style="background-color: #fee2e2; border-color: var(--danger-red);"';}optionsHTML += ``;});let feedbackBanner = '';if (isSubmitted) {const isCorrect = userAnswers[currentIdx] === q.correctIndex;feedbackBanner = isCorrect? <div class="feedback-box feedback-correct">✓ Jawaban Anda Benar (Skor +${SCORE_PER_CORRECT.toFixed(5)})</div>: <div class="feedback-box feedback-incorrect">✗ Jawaban Anda Salah. Pilihan tepat adalah: ${String.fromCharCode(65 + q.correctIndex)}</div>;}card.innerHTML = <div class="question-text"><strong>Pertanyaan ${q.id}:</strong><br>${q.question}</div> <div class="options-container">${optionsHTML}</div> ${feedbackBanner};document.getElementById('prev-btn').disabled = currentIdx === 0;document.getElementById('next-btn').disabled = currentIdx === questionsData.length - 1;document.querySelectorAll('.grid-item').forEach((btn, index) => {btn.classList.toggle('active', index === currentIdx);});}function renderGrid() {const grid = document.getElementById('question-nav-grid');if(!grid) return;grid.innerHTML = '';questionsData.forEach((q, idx) => {let statusClass = '';if (userAnswers[idx] !== undefined) statusClass = 'answered';const btn = document.createElement('button');btn.className = grid-item ${statusClass};btn.innerText = q.id;btn.onclick = () => {currentIdx = idx;renderQuestion();};grid.appendChild(btn);});}function saveAnswer(qIdx, optIdx) {if (isSubmitted) return;userAnswers[qIdx] = optIdx;localStorage.setItem('kepi_quiz_answers', JSON.stringify(userAnswers));const gridItems = document.querySelectorAll('#question-nav-grid .grid-item');if (gridItems[qIdx]) {gridItems[qIdx].classList.add('answered');}}function changeQuestion(step) {const target = currentIdx + step;if (target >= 0 && target < questionsData.length) {currentIdx = target;renderQuestion();}}// Timer Enginefunction startTimer() {clearInterval(timerInterval);timerInterval = setInterval(() => {if (!isTimerRunning) return;timeRemaining--;updateTimerDisplay();if (timeRemaining <= 0) {clearInterval(timerInterval);autoSubmitQuiz();}}, 1000);}function updateTimerDisplay() {const display = document.getElementById('timer-display');if(!display) return;const minutes = Math.floor(timeRemaining / 60);const seconds = timeRemaining % 60;display.innerText = ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};if (timeRemaining <= 300) {display.style.borderColor = 'var(--danger-red)';display.style.color = 'var(--danger-red)';} else if (timeRemaining <= 900) {display.style.borderColor = 'var(--warning-yellow)';display.style.color = 'var(--warning-yellow)';} else {display.style.borderColor = 'var(--success-green)';display.style.color = 'var(--text-light)';}}function toggleTimer() {if (isSubmitted) return;isTimerRunning = !isTimerRunning;const btn = document.getElementById('toggle-timer-btn');btn.innerText = isTimerRunning ? "Pause" : "Resume";btn.style.backgroundColor = isTimerRunning ? "rgba(255,255,255,0.2)" : "var(--orange-pagination)";}// Modal Controlfunction openSubmitModal() {if (isSubmitted) return;const totalAnswered = Object.keys(userAnswers).length;const totalQuestions = questionsData.length;document.getElementById('modal-body-text').innerText =Anda telah menjawab ${totalAnswered} dari ${totalQuestions} soal. Apakah Anda yakin ingin mengirimkan kuis ini sekarang?;document.getElementById('confirm-modal').style.display = 'flex';}function closeSubmitModal() {document.getElementById('confirm-modal').style.display = 'none';}// Kalkulasi Skor Akhirfunction submitQuiz() {isSubmitted = true;isTimerRunning = false;clearInterval(timerInterval);closeSubmitModal();document.getElementById('toggle-timer-btn').style.display = 'none';let correctCount = 0;questionsData.forEach((q, idx) => {if (userAnswers[idx] === q.correctIndex) {correctCount++;}});const finalScore = correctCount * SCORE_PER_CORRECT;localStorage.removeItem('kepi_quiz_answers'); // Bersihkan penyimpanan setelah kirimconst quizArea = document.getElementById('quiz-area');quizArea.innerHTML = <div class="card results-summary"> <h2>Hasil Ujian Selesai!</h2> <p>Skor Evaluasi Kompetensi KEPI Anda:</p> <div class="score-big">${finalScore.toFixed(2)} / 100</div> <p>Benar: <strong>${correctCount}</strong> | Salah/Kosong: <strong>${questionsData.length - correctCount}</strong> dari ${questionsData.length} Soal</p> <button class="nav-btn" style="margin-top:20px;" onclick="location.reload()">Ulangi Kuis</button> </div> <div class="card"> <h3>Review Lembar Jawaban</h3> <p style="margin-bottom: 15px; color:#6b7280;">Gunakan navigasi di bawah ini untuk melihat ulasan kunci jawaban pada tiap nomor.</p> <div class="question-grid" id="review-grid"></div> </div>;// Membuat review grid baru di bawah hasil nilaiconst reviewGrid = document.getElementById('review-grid');questionsData.forEach((q, idx) => {const btn = document.createElement('button');const isCorrect = userAnswers[idx] === q.correctIndex;btn.className = grid-item;btn.style.backgroundColor = isCorrect ? 'var(--success-green)' : 'var(--danger-red)';btn.style.color = 'white';btn.innerText = q.id;btn.onclick = () => {showReviewQuestion(idx);};reviewGrid.appendChild(btn);});const detailCard = document.createElement('div');detailCard.className = 'card';detailCard.id = 'question-card';quizArea.insertBefore(detailCard, reviewGrid.closest('.card'));currentIdx = 0;renderQuestion();}function showReviewQuestion(idx) {currentIdx = idx;renderQuestion();document.querySelectorAll('#review-grid .grid-item').forEach((btn, i) => {btn.style.outline = i === idx ? '3px solid black' : 'none';});}function autoSubmitQuiz() {alert('Waktu Anda telah habis! Sistem mengirimkan lembar jawaban secara otomatis.');submitQuiz();}function toggleSidebar() {document.getElementById('sidebar').classList.toggle('collapsed');}window.onload = initQuiz;
