@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="id"><head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260923-03-1b08425","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/83d6dfdadcd4750a.telemetry_sdk.js" integrity="sha512-XS4Dvzp6vbagZS9vFErihvr8aO3S0tH78KWUefn06fmL4WYqryBtZj/IOLITYj7dFA4gPVvPg1W/JB1DK3uLNQ=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KEPI - E-Learning</title>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root{--sidebar:#07527a;--deep:#064363;--header:#0b6e9e;--page:#f3f5f7;--ink:#244150;--line:#d7dee3;--yellow:#f6c515;--teal:#129ba7;--green:#21885a;--red:#c84646;--orange:#e78a27}
+    *{box-sizing:border-box} html{background:var(--page)} body{margin:0;font-family:"DM Sans",sans-serif;color:var(--ink);background:var(--page)}
+    button,input{font:inherit} button{cursor:pointer} button:focus-visible,input:focus-visible{outline:3px solid rgba(11,110,158,.42);outline-offset:2px}
+    .app-shell{width:100%;min-height:calc(100 * min(var(--vh,1vh),1vh));display:flex}.sidebar{width:200px;flex:0 0 200px;min-height:calc(100 * min(var(--vh,1vh),1vh));background:var(--sidebar);color:#fff;position:sticky;top:0;align-self:flex-start;overflow:hidden;z-index:20;transition:.25s}.sidebar.collapsed{width:60px;flex-basis:60px}.sidebar-inner{min-width:200px}
+    .brand-row{height:35px;background:#167ca9;display:flex;align-items:center;padding:0 8px;gap:7px}.brand-mark{width:12px;height:12px;border:2px solid #fff;border-radius:2px}.brand-name{font-size:13px;font-weight:700;white-space:nowrap}.course-label{height:34px;padding:0 10px;display:flex;align-items:center;border-bottom:1px solid rgba(255,255,255,.12);font-size:8px;font-weight:700;white-space:nowrap}.profile{padding:12px 10px;display:flex;gap:8px;border-bottom:1px solid rgba(255,255,255,.12)}.avatar{width:16px;height:16px;border-radius:50%;background:linear-gradient(135deg,#d8484f 48%,#296f9c 49%);flex:none}.profile-name{font-size:8px}.profile-id{font-size:7px;color:#b9d8e6}.nav-list{padding:5px 0}.nav-item{width:100%;display:flex;gap:8px;padding:7px 9px;color:#f1fbff;background:transparent;border:0;text-align:left;font-size:8px;white-space:nowrap}.nav-item:hover{background:rgba(255,255,255,.09)}.nav-item.active{background:#1889bb}.course-submenu{padding:2px 0 4px 18px;border-left:2px solid rgba(255,255,255,.25);margin-left:16px}.submenu-item{width:100%;display:block;padding:5px 8px;color:#cfeaf4;background:transparent;border:0;text-align:left;font-size:8px;border-radius:2px}.submenu-item:hover,.submenu-item.active{background:rgba(255,255,255,.14);color:#fff}.sidebar.collapsed .sidebar-copy{opacity:0}
+    .workspace{flex:1;min-width:0}.topbar{height:35px;background:var(--header);display:flex;align-items:center;justify-content:space-between;padding:0 11px;color:#fff}.topbar-left{display:flex;align-items:center;gap:12px}.icon-button{border:0;color:inherit;background:transparent;width:22px;height:22px}.top-title{font-size:8px;font-weight:700}.main-content{padding:10px;max-width:1260px;margin:0 auto}.page-title{font-size:13px;font-weight:500;margin:0 0 5px;color:#38505e}.crumb-box{background:#fff;border:1px solid var(--line);border-radius:4px;padding:5px 8px;font-size:8px;color:#21628b}.module-row{margin:8px 0 10px}.module-button{border:0;border-radius:2px;padding:4px 8px;background:#687880;color:#fff;font-size:8px}
+    .quiz-card{background:#fff;border:1px solid var(--line);box-shadow:0 1px 3px rgba(22,43,57,.12)}.question-bar{border-bottom:1px solid #e2e7ea;padding:10px;font-size:12px;line-height:1.45}.options{padding:10px;display:grid;gap:6px}.option{display:flex;align-items:center;gap:7px;border:1px solid transparent;border-radius:3px;padding:5px 6px;font-size:11px;cursor:pointer}.option:hover{background:#f3f8fa}.option input{accent-color:#167db4}.option.correct{background:#e5f5eb;border-color:#a6d8b6;color:#17613d}.option.incorrect{background:#fdecec;border-color:#edb4b4;color:#983232}
+    .question-nav{margin-top:10px;padding:7px 9px;background:#fff;border:1px solid var(--line);display:flex;gap:3px;align-items:center;overflow-x:auto}.nav-question,.previous-button,.next-button{font-size:8px;border-radius:2px;height:22px;border:0;flex:none}.nav-question{width:22px;background:var(--yellow);color:#35424a;font-weight:700}.nav-question.active{background:#1681b7;color:#fff}.nav-question.answered:not(.active){box-shadow:inset 0 -3px #8c6800}.previous-button,.next-button{padding:0 7px;background:#f5f5f5;border:1px solid #e0e0e0;color:#71818a}.next-button{color:#1681b7}.previous-button:disabled,.next-button:disabled{opacity:.45;cursor:not-allowed}.submit-row{display:flex;justify-content:flex-end;margin:11px 0 4px}.submit-button{background:#0b6e9e;color:#fff;border:0;border-radius:3px;padding:8px 12px;font-size:10px;font-weight:700}
+    .timer-card{position:fixed;z-index:12;left:16px;bottom:16px;width:92px;height:88px;border-radius:50%;background:#fff;border:3px solid var(--teal);box-shadow:0 3px 12px rgba(24,57,76,.22);display:flex;flex-direction:column;align-items:center;justify-content:center}.timer-card.warning{border-color:var(--orange)}.timer-card.danger{border-color:var(--red)}.timer-time{font-size:19px;line-height:1;color:#31424b}.timer-label{font-size:7px;color:#76838a;margin-top:3px}.timer-state{font-size:7px;color:#c84646;font-weight:700;height:10px}.timer-toggle{position:absolute;bottom:-11px;width:25px;height:25px;border-radius:50%;border:2px solid #fff;background:#0b6e9e;color:#fff;box-shadow:0 1px 3px rgba(0,0,0,.22)}
+    .result-panel{margin-top:12px;border:1px solid #a8d8b8;background:#f2fbf5;padding:14px;border-radius:4px}.result-title{font-size:15px;margin:0;color:#17613d;font-weight:700}.result-score{font-size:11px;line-height:1.6}.name-field{display:grid;gap:4px;max-width:400px;margin:12px 0}.name-field label{font-size:10px;font-weight:700}.name-field input{border:1px solid #b8c7ce;border-radius:3px;padding:7px;background:#fff}.summary-wrap{overflow-x:auto;background:#fff;border:1px solid #cfe1d5;margin-top:12px}.summary-table{border-collapse:collapse;width:100%;font-size:10px;min-width:700px}.summary-table th,.summary-table td{padding:7px;border-bottom:1px solid #e2ece5;text-align:left;vertical-align:top}.summary-table th{background:#e2f3e8}.status-ok{color:#17613d;font-weight:700}.status-no{color:#983232;font-weight:700}.result-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:13px}.send-button,.restart-button{border:0;color:#fff;padding:7px 10px;border-radius:3px;font-size:10px;font-weight:700}.send-button{background:#0b6e9e}.send-button:disabled{opacity:.6;cursor:wait}.restart-button{background:#21885a}.send-status{font-size:10px;margin:9px 0 0}.send-status.success{color:#17613d}.send-status.error{color:#983232}
+    .modal-backdrop{position:fixed;inset:0;z-index:50;background:rgba(13,37,50,.46);display:flex;align-items:center;justify-content:center;padding:16px}.modal-box{width:min(390px,100%);background:#fff;border-radius:5px;box-shadow:0 12px 30px rgba(0,0,0,.24);overflow:hidden}.modal-heading{margin:0;padding:12px 14px;background:#0b6e9e;color:#fff;font-size:14px}.modal-body{padding:15px 14px;font-size:11px}.modal-actions{padding:0 14px 14px;display:flex;justify-content:flex-end;gap:7px}.cancel-button,.confirm-button{border:0;border-radius:3px;padding:7px 10px;font-size:9px;font-weight:700}.cancel-button{background:#e6eaec;color:#47606d}.confirm-button{background:#21885a;color:#fff}.hidden{display:none!important}
+    @media(max-width:700px){.sidebar{position:fixed;transform:translateX(-100%);width:210px;box-shadow:3px 0 18px rgba(0,0,0,.2)}.sidebar.mobile-open{transform:translateX(0)}.sidebar.collapsed{width:210px}.sidebar.collapsed .sidebar-copy{opacity:1}.main-content{padding:12px;padding-bottom:105px}.timer-card{left:12px;bottom:12px;width:160px;height:52px;border-radius:8px;flex-direction:row;gap:6px;padding:0 9px}.timer-label{margin:0}.timer-state{margin-left:4px}.timer-toggle{position:static;margin-left:auto;flex:none}.question-nav{padding:8px}.nav-question{width:26px;height:25px}}
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/8de366929c5f3b48.data_sdk.js" type="text/javascript" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
+  <script src="/_sdk/94916171342f3214.editing_sdk.js" type="text/javascript" integrity="sha512-iD6yxTksfey/7N3Df0f52UtQsuvEgQYXQKioLwfyua/wCe7br8wUuc/pDNnGdXhJ/6CJKJ9sPcWHBNlAjOMhEQ=="></script>
+  <script src="/_sdk/765e1fea0cec97ce.resizing_sdk.js" type="text/javascript" integrity="sha512-IRTJnqww0+HQ5V/LlWEQrlD5SrYHaVvaeVoNe8HYQXoaguzUGheSd9+n9s6WOgaTcEH0g37DuINHZ9aqfzWjlw=="></script>
+ </head>
+ <body data-template-id="__page-root" style="background: rgb(243, 245, 247);">
+  <div class="app-shell">
+   <aside id="sidebar" data-template-id="sidebar-panel" class="sidebar canva-sidebar" aria-label="Navigasi utama" style="background: rgb(7, 82, 122);">
+    <div class="sidebar-inner">
+     <div data-template-id="brand-area" class="brand-row canva-header" style="background: rgb(22, 124, 169);">
+      <span class="brand-mark" aria-hidden="true"></span><span data-template-id="brand-name" class="brand-name sidebar-copy canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 15px;">E-LEARNING</span>
+     </div>
+     <div data-template-id="course-label" class="course-label canva-text" style="color: rgb(223, 241, 250); font-weight: 700; font-style: normal; font-size: 8px;">▦  E-LEARNING</div>
+     <nav class="nav-list" aria-label="Menu kursus">
+      <div class="course-menu"><button id="courses-menu-button" data-template-id="menu-courses" class="nav-item active canva-button" type="button" aria-expanded="true" aria-controls="course-submenu" style="background: rgb(24, 137, 187); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 8px;">▣ All Courses</button>
+       <div id="course-submenu" class="course-submenu" role="menu"><button data-template-id="submenu-kepi" class="submenu-item active canva-button" type="button" role="menuitem" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 8px;">KEPI</button><button data-template-id="submenu-umum" class="submenu-item canva-button" type="button" role="menuitem" style="color: rgb(207, 234, 244); font-weight: 400; font-style: normal; font-size: 8px;">UMUM</button>
+       </div>
+      </div>
+     </nav>
+    </div>
+   </aside>
+   <div class="workspace">
+    <header data-template-id="topbar" class="topbar canva-header" style="background: rgb(11, 110, 158);">
+     <div class="topbar-left"><button id="sidebar-toggle" class="icon-button" type="button" aria-label="Buka atau ciutkan menu" aria-expanded="true">☰</button> <span data-template-id="topbar-title" class="top-title canva-text" style="color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 8px;">KEPI</span>
+     </div><span aria-hidden="true">♙</span>
+    </header>
+    <main class="main-content">
+     <h1 data-template-id="quiz-title" class="page-title canva-text" style="color: rgb(56, 80, 94); font-weight: 500; font-style: normal; font-size: 30px;">KEPI</h1>
+     <section data-template-id="breadcrumb-box" class="crumb-box canva-banner" aria-label="Breadcrumb" style="background: rgb(255, 255, 255);">
+      <span data-template-id="breadcrumb-text" class="canva-text" style="color: rgb(33, 98, 139); font-weight: 400; font-style: normal; font-size: 8px;">Courses / Pendidikan Dasar Pelatihan 1 (PDP) / Topik / KEPI</span>
+     </section>
+     <div class="module-row">
+      <button data-template-id="modules-button" class="module-button canva-button" type="button" style="background: rgb(104, 120, 128); color: rgb(255, 255, 255); font-weight: 400; font-style: normal; font-size: 8px;">Modules</button>
+     </div>
+     <section data-template-id="quiz-card" class="quiz-card canva-card" aria-label="Pertanyaan kuis" style="background: rgb(255, 255, 255);">
+      <div id="question-text" class="question-bar" aria-live="polite"></div>
+      <form id="answer-form" class="options" aria-label="Pilihan jawaban"></form>
+     </section>
+     <nav class="question-nav" aria-label="Navigasi soal"><button id="previous-button" data-template-id="previous-button" class="previous-button canva-button" type="button" style="background: rgb(245, 245, 245); color: rgb(113, 129, 138); font-weight: 400; font-style: normal; font-size: 8px;">Sebelumnya</button>
+      <div id="question-buttons" class="flex gap-[3px]"></div><button id="next-button" data-template-id="next-button" class="next-button canva-button" type="button" style="background: rgb(245, 245, 245); color: rgb(22, 129, 183); font-weight: 400; font-style: normal; font-size: 8px;">Selanjutnya</button>
+     </nav>
+     <div id="submit-row" class="submit-row">
+      <button id="submit-button" data-template-id="submit-button" class="submit-button canva-button" type="button" style="background: rgb(11, 110, 158); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 10px;">Selesaikan kuis</button>
+     </div>
+     <section id="result-panel" data-template-id="result-panel" class="result-panel canva-panel hidden" aria-live="polite" style="background: rgb(242, 251, 245);">
+      <h2 data-template-id="result-title" class="result-title canva-text" style="color: rgb(23, 97, 61); font-weight: 700; font-style: normal; font-size: 23px;">Hasil Latihan</h2>
+      <p id="result-summary" class="result-score"></p>
+      <p id="time-notice" class="result-score hidden"></p>
+      <div class="name-field"><label data-template-id="participant-label" class="canva-text" for="participant-name" style="color: rgb(36, 65, 80); font-weight: 700; font-style: normal; font-size: 10px;">Nama peserta</label> <input id="participant-name" type="text" maxlength="100">
+      </div>
+      <div class="summary-wrap">
+       <table class="summary-table">
+        <thead>
+         <tr>
+          <th>No.</th>
+          <th>Pertanyaan</th>
+          <th>Jawaban dipilih</th>
+          <th>Jawaban benar</th>
+          <th>Status</th>
+          <th>Nilai</th>
+         </tr>
+        </thead>
+        <tbody id="summary-body"></tbody>
+       </table>
+      </div>
+      <div class="result-actions"><button id="send-button" data-template-id="send-button" class="send-button canva-button" type="button" aria-label="Kirim hasil kuis ke Spreadsheet" style="background: rgb(11, 110, 158); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 10px;">Kirim hasil ke Spreadsheet</button> <button id="restart-button" data-template-id="restart-button" class="restart-button canva-button" type="button" style="background: rgb(33, 136, 90); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 10px;">Ulangi kuis</button>
+      </div>
+      <p id="send-status" class="send-status" role="status"></p>
+     </section>
+    </main>
+   </div>
+  </div>
+  <aside id="timer-card" data-template-id="timer-card" class="timer-card canva-card" aria-label="Timer kuis" style="background: rgb(255, 255, 255);"><span id="timer-time" class="timer-time" aria-live="polite">60:00</span> <span data-template-id="timer-label" class="timer-label canva-text" style="color: rgb(118, 131, 138); font-weight: 400; font-style: normal; font-size: 7px;">Waktu tersisa</span> <span id="timer-state" class="timer-state"></span> <button id="timer-toggle" class="timer-toggle" type="button" aria-label="Jeda timer">Ⅱ</button>
+  </aside>
+  <div id="confirmation-modal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+   <section class="modal-box">
+    <h2 id="modal-title" data-template-id="modal-title" class="modal-heading canva-text" style="background: rgb(11, 110, 158); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 23px;">Konfirmasi penyelesaian</h2>
+    <div class="modal-body">
+     <p id="modal-message"></p>
+    </div>
+    <div class="modal-actions"><button id="cancel-submit" data-template-id="cancel-submit" class="cancel-button canva-button" type="button" style="background: rgb(230, 234, 236); color: rgb(71, 96, 109); font-weight: 700; font-style: normal; font-size: 9px;">Batal</button> <button id="confirm-submit" data-template-id="confirm-submit" class="confirm-button canva-button" type="button" style="background: rgb(33, 136, 90); color: rgb(255, 255, 255); font-weight: 700; font-style: normal; font-size: 9px;">Ya, tampilkan hasil</button>
+    </div>
+   </section>
+  </div>
+  <script>
+    const endpoint="https://script.google.com/macros/s/AKfycbxkpi0yJRgy3mm9SP55gVC_dx4kn9EXmIctin2dinFKwkZw7rrcu5GbN8KUXdWayu83/exec";
+    const point=2.857142857142857;
+    const questions=[
+      ["Lingkungan mikro perusahaan yang mencakup pihak pembeli produk atau jasa adalah...","Pemasok","Pelanggan","Pemerintah","Masyarakat umum",1],
+      ["Pertumbuhan penduduk, usia, dan persebaran populasi termasuk faktor...","Demografi","Teknologi","Politik","Pesaing",0],
+      ["Pihak yang menyediakan bahan baku bagi kegiatan produksi disebut...","Perantara","Pemasok","Publik","Pesaing",1],
+      ["Internet, otomatisasi, dan kecerdasan buatan merupakan kekuatan lingkungan...","Ekonomi","Teknologi","Sosial budaya","Demografi",1],
+      ["Inflasi, daya beli, dan tingkat pengangguran termasuk lingkungan...","Ekonomi","Alam","Mikro","Internal",0],
+      ["Nilai, persepsi, dan gaya hidup masyarakat merupakan faktor...","Politik","Sosial budaya","Teknologi","Pemasok",1],
+      ["Undang-undang perlindungan konsumen merupakan bagian lingkungan...","Hukum dan politik","Teknologi","Demografi","Alam",0],
+      ["Perusahaan lain dengan produk serupa untuk pasar yang sama adalah...","Publik","Pesaing","Perantara","Pemasok",1],
+      ["Udara, air, sumber daya alam, serta iklim adalah faktor...","Lingkungan alam","Lingkungan internal","Perantara","Pelanggan",0],
+      ["Distributor dan pengecer yang membantu penyaluran produk disebut...","Pemasok","Perantara pemasaran","Publik keuangan","Pesaing",1],
+      ["Tujuan analisis lingkungan bisnis adalah...","Mengabaikan perubahan pasar","Mengidentifikasi peluang dan ancaman","Menetapkan harga tanpa data","Menghilangkan persaingan",1],
+      ["Kenaikan tingkat suku bunga paling langsung memengaruhi faktor...","Ekonomi","Demografi","Alam","Sosial budaya",0],
+      ["Kelompok yang dapat memengaruhi kemampuan perusahaan mencapai tujuan disebut...","Publik","Pelanggan","Pemasok","Pesaing",0],
+      ["Gaya hidup ramah lingkungan menunjukkan pengaruh...","Sosial budaya","Teknologi","Pemasok","Distribusi",0],
+      ["Ciri utama kawasan pusat bisnis atau CBD adalah...","Aktivitas jasa dan perdagangan padat","Hanya permukiman","Akses transportasi rendah","Jauh dari kegiatan ekonomi",0],
+      ["Segmentasi menurut usia, jenis kelamin, dan pendapatan memakai variabel...","Geografis","Psikografis","Demografis","Perilaku",2],
+      ["Perubahan kebijakan pajak adalah pengaruh lingkungan...","Politik dan hukum","Teknologi","Alam","Mikro",0],
+      ["Kemampuan memperoleh pinjaman dipengaruhi publik...","Media","Keuangan","Lokal","Internal",1],
+      ["Pelanggan, pemasok, dan pesaing termasuk lingkungan...","Makro","Mikro","Global","Alam",1],
+      ["Pembeli aktual dan potensial suatu produk disebut...","Pasar pelanggan","Pasar pemasok","Pasar modal","Pasar tenaga kerja",0],
+      ["Ruang terbuka hijau dalam perencanaan kota mendukung...","Kualitas lingkungan dan kesehatan","Peningkatan limbah","Pengurangan akses publik","Monopoli usaha",0],
+      ["Zonasi tata ruang kota digunakan terutama untuk...","Mengatur penggunaan lahan","Menghapus transportasi publik","Menentukan harga produk","Mengganti hukum dagang",0],
+      ["Kemacetan kota dapat meningkatkan biaya bisnis melalui...","Waktu distribusi lebih lama","Pajak otomatis hilang","Harga bahan baku nol","Permintaan pasti naik",0],
+      ["Kebijakan pemerintah yang stabil memberi bisnis kondisi...","Lebih pasti untuk perencanaan","Tanpa persaingan","Tanpa konsumen","Tanpa aturan",0],
+      ["Peraturan izin usaha bertujuan antara lain untuk...","Menjamin kepatuhan dan keamanan","Menghilangkan semua biaya","Mengatur selera pelanggan","Mengganti inovasi",0],
+      ["Analisis SWOT mencakup kekuatan, kelemahan, peluang, dan...","Ancaman","Pendapatan","Distribusi","Produksi",0],
+      ["Tingkat urbanisasi yang meningkat dapat menciptakan peluang bagi...","Layanan transportasi dan hunian","Penghapusan pasar","Penurunan kebutuhan jasa","Pelarangan inovasi",0],
+      ["Nilai tukar mata uang penting bagi perusahaan yang...","Melakukan ekspor atau impor","Hanya menjual internal","Tidak memakai uang","Tidak memiliki pelanggan",0],
+      ["Kenaikan harga energi dapat menjadi ancaman karena...","Meningkatkan biaya operasional","Mengurangi kebutuhan efisiensi","Menjamin laba tetap","Menghapus pajak",0],
+      ["Adopsi pembayaran digital terutama memengaruhi cara bisnis...","Melayani transaksi pelanggan","Menghapus produk","Menghilangkan pemasok","Menetapkan undang-undang",0],
+      ["Reputasi perusahaan di media sosial berkaitan dengan publik...","Media","Pemasok","Pesaing","Internal",0],
+      ["Kebijakan upah minimum berpengaruh langsung pada...","Biaya tenaga kerja","Cuaca","Jumlah pesaing","Bentuk CBD",0],
+      ["Lokasi usaha dekat transportasi publik dapat meningkatkan...","Akses pelanggan","Risiko hukum","Polusi produk","Jumlah pemasok wajib",0],
+      ["Perusahaan perlu memantau tren konsumen agar strategi...","Tetap relevan","Tidak berubah","Tidak memerlukan data","Mengabaikan pasar",0],
+      ["Contoh respons bisnis terhadap perubahan teknologi adalah...","Meningkatkan keterampilan digital karyawan","Menolak semua informasi","Menghapus layanan pelanggan","Mengabaikan keamanan data",0]
+    ];
+    let current=0,answers=Array(35).fill(null),submitted=false,secondsLeft=3600,paused=false,timerHandle=null,timedOut=false;
+    const $=id=>document.getElementById(id),questionText=$("question-text"),answerForm=$("answer-form"),questionButtons=$("question-buttons");
+
+    function formatTime(){return String(Math.floor(secondsLeft/60)).padStart(2,"0")+":"+String(secondsLeft%60).padStart(2,"0")}
+    function updateTimer(){
+      $("timer-time").textContent=formatTime();
+      $("timer-card").classList.toggle("warning",secondsLeft<600&&secondsLeft>=60);
+      $("timer-card").classList.toggle("danger",secondsLeft<60);
+      $("timer-state").textContent=paused&&secondsLeft>0?"DIJEDA":"";
+    }
+    function renderButtons(){
+      questionButtons.innerHTML="";
+      questions.forEach((q,i)=>{const b=document.createElement("button");b.type="button";b.className="nav-question";b.textContent=i+1;b.setAttribute("aria-label","Soal "+(i+1));b.onclick=()=>{if(!submitted){current=i;renderQuiz()}};questionButtons.appendChild(b)});
+    }
+    function renderQuiz(){
+      const q=questions[current];questionText.textContent=(current+1)+". "+q[0];answerForm.innerHTML="";
+      q.slice(1,5).forEach((text,i)=>{
+        const id="q"+current+"o"+i,label=document.createElement("label"),radio=document.createElement("input"),span=document.createElement("span");
+        label.className="option";label.htmlFor=id;radio.type="radio";radio.id=id;radio.name="question";radio.checked=answers[current]===i;radio.disabled=submitted;
+        radio.onchange=()=>{answers[current]=i;renderQuiz()};span.textContent=text;label.append(radio,span);
+        if(submitted&&i===q[5])label.classList.add("correct");
+        if(submitted&&answers[current]===i&&i!==q[5])label.classList.add("incorrect");
+        answerForm.appendChild(label);
+      });
+      [...questionButtons.children].forEach((b,i)=>{b.classList.toggle("active",i===current);b.classList.toggle("answered",answers[i]!==null);b.setAttribute("aria-current",i===current?"step":"false")});
+      $("previous-button").disabled=current===0;$("next-button").disabled=current===34;$("submit-row").classList.toggle("hidden",submitted);
+    }
+    function scoreData(){
+      const correct=answers.reduce((n,a,i)=>n+(a===questions[i][5]?1:0),0),answered=answers.filter(x=>x!==null).length,score=Math.min(100,correct*point);
+      return {correct,answered,score};
+    }
+    function buildSummary(){
+      const body=$("summary-body");body.innerHTML="";
+      questions.forEach((q,i)=>{const selected=answers[i]===null?"Tidak dijawab":q[answers[i]+1],correct=q[q[5]+1],ok=answers[i]===q[5];const row=document.createElement("tr");row.innerHTML="<td>"+(i+1)+"</td><td>"+q[0]+"</td><td>"+selected+"</td><td>"+correct+"</td><td class='"+(ok?"status-ok":"status-no")+"'>"+(ok?"Benar":"Salah")+"</td><td>"+(ok?point.toFixed(2):"0.00")+"</td>";body.appendChild(row)});
+    }
+    function showResults(timeout=false){
+      submitted=true;paused=true;timedOut=timeout;clearInterval(timerHandle);$("confirmation-modal").classList.add("hidden");
+      const d=scoreData(),pass=d.score>=70;$("result-summary").textContent="Jumlah benar: "+d.correct+" dari 35 soal. Terjawab: "+d.answered+" dari 35 soal. Nilai akhir: "+d.score.toFixed(2)+" / 100. Status: "+(pass?"Lulus":"Perlu mengulang")+".";
+      $("time-notice").textContent=timeout?"Waktu telah habis. Kuis dikunci dan hasil ditampilkan.":"";$("time-notice").classList.toggle("hidden",!timeout);
+      buildSummary();$("result-panel").classList.remove("hidden");renderQuiz();$("result-panel").scrollIntoView({behavior:"smooth",block:"nearest"});
+    }
+    function startTimer(){timerHandle=setInterval(()=>{if(!paused&&secondsLeft>0){secondsLeft--;updateTimer();if(secondsLeft===0)showResults(true)}},1000)}
+    $("sidebar-toggle").onclick=()=>{const s=$("sidebar");if(innerWidth<=700){s.classList.toggle("mobile-open");$("sidebar-toggle").setAttribute("aria-expanded",s.classList.contains("mobile-open"))}else{s.classList.toggle("collapsed");$("sidebar-toggle").setAttribute("aria-expanded",!s.classList.contains("collapsed"))}};
+    $("courses-menu-button").onclick=()=>{const open=$("course-submenu").classList.toggle("hidden");$("courses-menu-button").setAttribute("aria-expanded",String(!open))};
+    $("submenu-kepi").onclick=()=>{$("submenu-kepi").classList.add("active");$("submenu-umum").classList.remove("active")};
+    $("submenu-umum").onclick=()=>{$("submenu-umum").classList.add("active");$("submenu-kepi").classList.remove("active")};
+    $("previous-button").onclick=()=>{if(current>0){current--;renderQuiz()}};
+    $("next-button").onclick=()=>{if(current<34){current++;renderQuiz()}};
+    $("submit-button").onclick=()=>{$("modal-message").textContent="Anda telah mengisi "+answers.filter(x=>x!==null).length+" dari 35 soal. Apakah Anda yakin ingin menyelesaikan kuis?";$("confirmation-modal").classList.remove("hidden");$("confirm-submit").focus()};
+    $("cancel-submit").onclick=()=>$("confirmation-modal").classList.add("hidden");
+    $("confirm-submit").onclick=()=>showResults(false);
+    $("confirmation-modal").onclick=e=>{if(e.target===$("confirmation-modal"))$("confirmation-modal").classList.add("hidden")};
+    $("timer-toggle").onclick=()=>{if(secondsLeft===0||submitted)return;paused=!paused;$("timer-toggle").textContent=paused?"▶":"Ⅱ";$("timer-toggle").setAttribute("aria-label",paused?"Lanjutkan timer":"Jeda timer");updateTimer()};
+    $("restart-button").onclick=()=>{answers=Array(35).fill(null);current=0;submitted=false;secondsLeft=3600;paused=false;timedOut=false;clearInterval(timerHandle);$("participant-name").value="";$("send-status").textContent="";$("send-status").className="send-status";$("send-button").disabled=false;$("send-button").textContent="Kirim hasil ke Spreadsheet";$("result-panel").classList.add("hidden");$("timer-toggle").textContent="Ⅱ";$("timer-toggle").setAttribute("aria-label","Jeda timer");updateTimer();renderQuiz();startTimer();scrollTo({top:0,behavior:"smooth"})};
+    $("send-button").onclick=async e=>{
+      const button=e.currentTarget,d=scoreData(),name=$("participant-name").value.trim(),payload={
+        namaPengguna:name||null,timestamp:new Date().toISOString(),totalSoal:35,jumlahBenar:d.correct,jumlahTerjawab:d.answered,nilai:Number(d.score.toFixed(2)),durasiTimerAwal:"60:00",sisaWaktu:formatTime(),statusLulus:d.score>=70,answers:questions.map((q,i)=>({nomor:i+1,question:q[0],selectedAnswer:answers[i]===null?null:q[answers[i]+1],correctAnswer:q[q[5]+1],isCorrect:answers[i]===q[5],score:answers[i]===q[5]?point:0}))
+      };
+      button.disabled=true;button.textContent="Mengirim...";$("send-status").textContent="Mengirim hasil ke Spreadsheet...";$("send-status").className="send-status";
+      try{const response=await fetch(endpoint,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});if(!response.ok)throw new Error("Respons server tidak berhasil");$("send-status").textContent="Hasil berhasil dikirim ke Spreadsheet";$("send-status").className="send-status success";button.textContent="Hasil telah dikirim"}
+      catch(err){$("send-status").textContent="Hasil belum dapat dikirim ke Spreadsheet. Periksa koneksi atau pengaturan CORS endpoint, lalu coba lagi."; $("send-status").className="send-status error";button.disabled=false;button.textContent="Coba kirim lagi"}
+    };
+    renderButtons();renderQuiz();updateTimer();startTimer();
+  </script>
+ 
+</body></html>
