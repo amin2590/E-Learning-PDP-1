@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz MD 01 Penilaian dan Ruang Lingkup</title>
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --primary-blue: #2c7abe;
+            --dark-blue: #1d4e7a;
+            --bg-light: #f4f7f9;
+            --text-dark: #333;
+            --white: #ffffff;
+            --timer-color: #00b4d8;
+            --success: #2ec4b6;
+            --danger: #e71d36;
+            --warning: #ff9f1c;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR STYLING */
+        .sidebar {
+            width: 260px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            position: relative;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--dark-blue);
+        }
+
+        .profile-box {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background-color: rgba(0,0,0,0.1);
+        }
+
+        .profile-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 1.5rem;
+            overflow: hidden;
+        }
+
+        .profile-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .profile-info p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 15px 0;
+            flex-grow: 1;
+        }
+
+        .menu-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: 0.2s;
+            opacity: 0.9;
+        }
+
+        .menu-item:hover, .menu-item.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            opacity: 1;
+            font-weight: bold;
+        }
+
+        /* TIMER CONTAINER */
+        .timer-container {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            gap: 10px;
+        }
+
+        .circular-timer {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 8px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            background-color: transparent;
+            transition: all 0.4s ease;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .timer-status {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin-top: -5px;
+        }
+
+        /* MAIN CONTENT STYLING */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .top-navbar {
+            height: 60px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-weight: 600;
+            justify-content: space-between;
+        }
+
+        .toggle-btn {
+            display: none;
+            font-size: 1.3rem;
+            cursor: pointer;
+        }
+
+        .quiz-container {
+            padding: 30px;
+            flex-grow: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        .quiz-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .modules-btn {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        /* QUESTION CARD */
+        .question-card {
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option-item:hover {
+            background-color: #f8f9fa;
+            border-color: #ccc;
+        }
+
+        .option-item input[type="radio"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: var(--primary-blue);
+        }
+
+        .option-label {
+            font-size: 0.95rem;
+            line-height: 1.4;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* FEEDBACK COLORS */
+        .option-item.correct-feedback {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+            color: #155724;
+        }
+
+        .option-item.wrong-feedback {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+            color: #721c24;
+        }
+
+        /* PAGINATION NAVIGATION */
+        .navigation-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            padding: 8px 14px;
+            border: 1px solid #ddd;
+            background-color: var(--white);
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--primary-blue);
+            transition: 0.2s;
+        }
+
+        .nav-btn:hover {
+            background-color: #f0f0f0;
+        }
+
+        .page-numbers {
+            display: flex;
+            gap: 4px;
+            flex-wrap: wrap;
+        }
+
+        .page-num {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            background-color: #ffcc00; /* Warna kuning sesuai gambar */
+            color: #333;
+            cursor: pointer;
+            font-weight: 500;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .page-num.active {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            font-weight: bold;
+        }
+
+        .page-num.answered:not(.active) {
+            background-color: #cce5ff;
+            color: #004085;
+        }
+
+        /* RESULT SUMMARY */
+        .result-panel {
+            background-color: var(--white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            display: none;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 15px 0;
+        }
+
+        .submit-section {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-submit-sheet {
+            background-color: #28a745;
+            color: white;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: 0.2s;
+        }
+
+        .btn-submit-sheet:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+Gunakan kode dengan hati-hati.}.btn-submit-sheet:disabled {background-color: #a7c0ab;cursor: not-allowed;transform: none;}/* RESPONSIVE LAYOUT */@media (max-width: 768px) {body {flex-direction: column;}.sidebar {width: 100%;flex-direction: row;flex-wrap: wrap;justify-content: space-between;align-items: center;}.sidebar-header, .profile-box, .timer-container {padding: 10px 15px;border: none;background: none;}.profile-box, .menu-list {display: none; /* Sembunyikan menu & profil di layar kecil untuk ringkas */}.timer-container {width: auto;}.circular-timer {width: 70px;height: 70px;font-size: 1rem;border-width: 4px;}.timer-status {display: none;}.quiz-container {padding: 15px;}.navigation-row {flex-direction: column;gap: 12px;width: 100%;}.page-numbers {justify-content: center;}} E-LEARNINGAmin Yansyah18-A-08889 Dashboard All Courses Reference Materials E-Books Downloads Presensi Kehadiran60:00Running ONLINE COURSE MAPPI / Courses / Pendidikan Dasar Penilaian 1 / MD 01 / Quiz MD 01Quiz MD 01 Penilaian dan Ruang Lingkup (KEPI KUIS) ModulesHasil Latihan Soal0.00Anda menjawab benar 0 dari 14 soal. Kirim Nilai ke SpreadsheetMemuat soal... SebelumnyaSelanjutnya // DATA SOAL BERDASARKAN DOKUMEN KEPI KUIS.PDFconst quizData = [{q: "Salah satu yang tidak termasuk kepada Prinsip Dasar Etik Kompetensi adalah:",a: "Mempertahankan pengetahuan dan keterampilan profesional pada tingkat yang diperlukan untuk memastikan bahwa Pemberi Tugas menerima layanan profesional,",b: "Sebelum penugasan dilaporkan, Lingkup Penugasan yang tertulis dan cukup rinci hendaknya sudah dipahami dan disetujui antara Pemberi Tugas dan Penilai untuk mencegah interpretasi yang berbeda.",c: "Penilai harus menerapkan secara konsisten Sistem Pengendalian Mutu sebagaimana ditentukan oleh peraturan perundang-undangan,",d: "Bertindak sesuai dengan standar teknis dan profesional yang berlaku saat memberikan layanan profesional,",correct: "c"},{q: "Penilai sebagai karyawan atau tenaga ahli yang bekerja pada suatu Kantor Jasa Penilai Publik (KJPP) tidak dibenarkan untuk melaksanakan penugasan atas namanya sendiri atau KJPP lain tanpa izin dari kantor KJPP dimana ia berada. Hal ini diatur dimana di KEPI?",a: "Tanggung jawab terhadap sesama Penilai dan Kantor Jasa Penilai Publik,",b: "Tanggung jawab terhadap diri sendiri,",c: "Tanggung jawab terhadap masyarakat,",d: "Tanggung Jawab terhadap Integritas Pribadi Penilai.",correct: "d"},{q: "Seseorang yang telah lulus ujian sertifikasi di bidang penilaian yang diselenggarakan oleh Asosiasi Profesi Penilai disebut:",a: "Tenaga Penilai,",b: "Penilai Publik,",c: "Penilai Bersertifikat,",d: "Penilai Internal",correct: "c"},{q: "Nilai-nilai atau norma-norma moral yang menjadi pedoman bagi seseorang atau kelompok dalam mengatur perilakunya secara professional disebut:",a: "Etik",b: "Standar Penilaian Indonesia",c: "Kode Etik Penilai Indonesia",d: "Kode Etik",correct: "d"},{q: "Seseorang yang telah lulus pendidikan di bidang penilaian yang diselenggarakan oleh Asosiasi Profesi Penilai disebut:",a: "Penilai Internal",b: "Penilai Publik",c: "Penilai Bersertifikat",d: "Tenaga Penilai",correct: "d"},{q: "Kumpulan etik yang dibuat untuk menjunjung tinggi profesi demi tanggung jawab terhadap profesi, masyarakat dan Ketuhanan Yang Maha Esa.",a: "Standar Penilaian Indonesia",b: "Kode Etik Penilai Indonesia",c: "Etik",d: "Kode Etik",correct: "d"},{q: "Penilai harus mengambil langkah-langkah yang wajar untuk memastikan bahwa staf di bawah pengawasan Penilai dan orang yang memberikan tugas menghormati prinsip kerahasiaan. Pernyataan ini berhubungan dengan:",a: "Kerahasiaan",b: "Tanggung jawab kepada Pemberi Tugas",c: "Ancaman kerahasiaan",d: "Objektifitas",correct: "a"},{q: "Penilai bekerja secara profesional, tidak memihak, tidak memiliki kepentingan terhadap obyek penugasan atau tidak dipengaruhi orang lain. Pernyataan ini termasuk kepada:",a: "Prinsip Etik Prilaku Profesional",b: "Prinsip Etik",c: "Prinsip Etik Objektifitas",d: "Prinsip Etik Integritas",correct: "c"},{q: "Jika Penilai tidak memiliki pengetahuan profesional dan pengalaman yang diperlukan untuk melakukan tugas penilaian yang ditawarkan secara professional, maka Penilai harus:",a: "Tetap dapat dilakukan dengan menggunakan asumsi khusus.",b: "Harus menolak tugas tersebut,",c: "Harus menolak tugas tersebut, kecuali menggunakan bantuan dari luar,",d: "Harus menggunakan bantuan dari luar,",correct: "c"},{q: "Objektifitas mengatur salah satu hal yang disebutkan di bawah ini:",a: "Penilai akan melakukan pemeriksaan dan verifikasi untuk memperoleh keyakinan bahwa data yang digunakan benar.",b: "Menerima suatu penugasan untuk membuat laporan penilaian berdasarkan asumsi pada prasyarat hipotesa yang tidak mungkin dilaksanakan.",c: "Jika tidak ada pencegahan yang memuaskan untuk menghilangkan ancaman objektivitas, Penilai dapat menerima penugasan.",d: "Penilai tidak diperkenankan dengan sengaja salah menafsirkan kualifikasi profesional yang tidak dimilikinya.",correct: "d"},{q: "Penilai wajib membuat arsip data pekerjaan untuk setiap penugasan yang telah diselesaikan dalam suatu arsip yang benar pada kertas (hardcopy) atau dalam bentuk elektronik (softcopy). Ketentuan diatur berhubungan kepada:",a: "Perilaku Profesional",b: "Objektifitas",c: "Dokumentasi",d: "Kompetensi",correct: "c"},{q: "Bila Penilai mendapatkan penugasan untuk objek yang sama dari dua Pemberi Tugas yang berlainan maka hal perlu dilakukan Penilai adalah:",a: "Tetap dapat menerima penugasan tersebut,",b: "Menolak penugasan tersebut,",c: "Penilai boleh menerima penugasan dari salah satu pihak saja, kecuali apabila pihak-pihak menyetujuinya.",d: "Penilai tersebut hanya boleh menerima penugasan dari salah satu pihak saja secara mutlak.",correct: "c"},{q: "Penilai harus menghindari tindakan yang dapat mendiskreditkan profesi. Hal ini termasuk kepada pengaturan:",a: "Ancaman terhadap Pemberi Tugas,",b: "Prinsip Dasar Kerahasiaan.",c: "Tanggung Jawab sesama Penilai,",d: "Prinsip Dasar Etik Perilaku Profesional,",correct: "d"},{q: "Pengawasan penerimaan atau pemberian hadiah, komisi, dan jenis lainnya dalam pelaksanaan jasa penilaian termasuk pelanggaran terhadap:",a: "Tanggung jawab terhadap sesama Penilai dan Kantor Jasa Penilai Publik,",b: "Tanggung jawab terhadap diri sendiri,",c: "Tanggung jawab terhadap masyarakat,",d: "Tanggung Jawab terhadap Integritas Pribadi Penilai.",correct: "d"}];// STATE APLIKASIlet currentIdx = 0;let userAnswers = new Array(quizData.length).fill(null);let examFinished = false;// PENGATURAN SKOR & WEB APP URLconst BOBOT_SKOR = 2.857142857142857;const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxkpi0yJRgy3mm9SP55gVC_dx4kn9EXmIctin2dinFKwkZw7rrcu5GbN8KUXdWayu83/exec";// TIMER STATElet totalSeconds = 60 * 60; // 60 Menitlet timerInterval = null;let isPaused = false;// INISIALISASI SAAT HALAMAN DIBUKAwindow.onload = function() {renderPageNumbers();loadQuestion(0);startTimer();};// RENDER ANGKA NAVIGASIfunction renderPageNumbers() {const container = document.getElementById("pageNumbersContainer");container.innerHTML = "";quizData.forEach((_, idx) => {const btn = document.createElement("div");btn.className = "page-num";btn.id = pagenum-${idx};btn.innerText = idx + 1;btn.onclick = () => { saveCurrentAnswer(); loadQuestion(idx); };container.appendChild(btn);});}// LOAD DETAIL SOALfunction loadQuestion(idx) {currentIdx = idx;const item = quizData[idx];// Perbarui status kelas aktif di navigasi halamandocument.querySelectorAll(".page-num").forEach((el, i) => {el.classList.remove("active");if(userAnswers[i] !== null) {el.classList.add("answered");}});document.getElementById(pagenum-${idx}).classList.add("active");// Pasang teks soaldocument.getElementById("questionText").innerText = ${idx + 1}. ${item.q};// Pasang pilihan jawabanconst container = document.getElementById("optionsContainer");container.innerHTML = "";const options = ['a', 'b', 'c', 'd'];options.forEach(opt => {const optionWrapper = document.createElement("div");optionWrapper.className = "option-item";optionWrapper.id = wrapper-${opt};const radio = document.createElement("input");radio.type = "radio";radio.name = "quizOption";radio.value = opt;radio.id = opt-${opt};// Kembalikan jawaban yang pernah dipilih sebelumnyaif(userAnswers[idx] === opt) {radio.checked = true;}// Kunci input jika kuis telah berakhir/selesai waktuif(examFinished) {radio.disabled = true;}const label = document.createElement("label");label.className = "option-label";label.htmlFor = opt-${opt};label.innerText = ${opt.toUpperCase()}. ${item[opt]};optionWrapper.appendChild(radio);optionWrapper.appendChild(label);// Event listener klik area box pilihan jawabanoptionWrapper.onclick = () => {if(!examFinished) {radio.checked = true;saveCurrentAnswer();}};container.appendChild(optionWrapper);});// Jika kuis sudah selesai, langsung munculkan feedback benar/salah pada pilihan tersebutif(examFinished) {showFeedbackForCurrentQuestion();}}// SIMPAN JAWABAN SAAT BERPINDAHfunction saveCurrentAnswer() {const selected = document.querySelector('input[name="quizOption"]:checked');if(selected) {userAnswers[currentIdx] = selected.value;document.getElementById(pagenum-${currentIdx}).classList.add("answered");}}// TOMBOL NAVIGASI SEBELUMNYA & SELANJUTNYAfunction nextQuestion() {saveCurrentAnswer();if(currentIdx < quizData.length - 1) {loadQuestion(currentIdx + 1);} else if(!examFinished) {if(confirm("Apakah Anda yakin ingin menyelesaikan kuis ini dan melihat hasil?")) {finishQuiz();}}}function prevQuestion() {saveCurrentAnswer();if(currentIdx > 0) {loadQuestion(currentIdx - 1);}}// HITUNG MUNDUR TIMERfunction startTimer() {timerInterval = setInterval(() => {if(!isPaused) {totalSeconds--;updateTimerUI();if(totalSeconds <= 0) {clearInterval(timerInterval);alert("Waktu habis! Kuis otomatis diselesaikan.");finishQuiz();}}}, 1000);}function updateTimerUI() {const minutes = Math.floor(totalSeconds / 60);const seconds = totalSeconds % 60;const stringTime = ${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')};document.getElementById("timeString").innerText = stringTime;const timerCircle = document.getElementById("timerCircle");// PERUBAHAN WARNA SESUAI SISA WAKTUif(totalSeconds > 15 * 60) {timerCircle.style.borderColor = "#2ec4b6"; // Hijau/Teal Aman} else if (totalSeconds <= 15 * 60 && totalSeconds > 5 * 60) {timerCircle.style.borderColor = "#ff9f1c"; // Jingga Peringatan} else {timerCircle.style.borderColor = "#e71d36"; // Merah Kritis}}// FITUR PAUSE/RESUME TIMER KETIKA DIKLIKfunction toggleTimer() {if(examFinished) return;isPaused = !isPaused;const statusLabel = document.getElementById("timerStatusLabel");if(isPaused) {statusLabel.innerText = "Paused";statusLabel.style.backgroundColor = "rgba(231, 29, 54, 0.4)";} else {statusLabel.innerText = "Running";statusLabel.style.backgroundColor = "rgba(0, 0, 0, 0.2)";}}// HITUNG SKOR & AKHIRI KUISfunction finishQuiz() {saveCurrentAnswer();examFinished = true;isPaused = true;clearInterval(timerInterval);document.getElementById("timerStatusLabel").innerText = "Finished";let correctCount = 0;quizData.forEach((item, idx) => {if(userAnswers[idx] === item.correct) {correctCount++;}});// Perhitungan skor berdasarkan rumus kustomlet finalScore = correctCount * BOBOT_SKOR;if(finalScore > 100) finalScore = 100; // Pembatas batas atas jika toleransi pembulatan// Tampilkan Panel Hasildocument.getElementById("finalScore").innerText = finalScore.toFixed(2);document.getElementById("scoreSummary").innerText = Anda menjawab benar ${correctCount} dari ${quizData.length} soal.;document.getElementById("resultPanel").style.display = "block";// Tampilkan feedback visual di soal aktif sekarangshowFeedbackForCurrentQuestion();// Scroll otomatis ke atas melihat nilaiwindow.scrollTo({top: 0, behavior: 'smooth'});}// FEEDBACK JAWABAN BENAR DAN SALAHfunction showFeedbackForCurrentQuestion() {const item = quizData[currentIdx];const selectedAnswer = userAnswers[currentIdx];// Tandai jawaban benar yang seharusnya dengan warna hijauconst correctWrapper = document.getElementById(wrapper-${item.correct});if(correctWrapper) {correctWrapper.classList.add("correct-feedback");}// Jika jawaban pengguna salah, beri tanda merah pada pilihan salah tersebutif(selectedAnswer && selectedAnswer !== item.correct) {const wrongWrapper = document.getElementById(wrapper-${selectedAnswer});if(wrongWrapper) {wrongWrapper.classList.add("wrong-feedback");}}}// INTEGRASI DENGAN GOOGLE APP SCRIPT SPREADSHEETfunction kirimKeSpreadsheet() {const btn = document.getElementById("btnKirim");btn.disabled = true;btn.innerText = "Mengirim...";let correctCount = 0;quizData.forEach((item, idx) => {if(userAnswers[idx] === item.correct) correctCount++;});const skorAkhir = (correctCount * BOBOT_SKOR).toFixed(2);// Data yang akan diposting ke spreadsheet Andaconst payload = {nama: "Amin Yansyah",id_peserta: "18-A-08889",skor: skorAkhir,benar: correctCount,salah: quizData.length - correctCount,waktu_sisa: document.getElementById("timeString").innerText};// Mengirim data menggunakan metode Fetch APIfetch(SCRIPT_URL, {method: "POST",mode: "no-cors", // Digunakan agar menghindari kendala kebijakan CORS Web Appheaders: {"Content-Type": "application/json"},body: JSON.stringify(payload)}).then(() => {alert("Data nilai latihan soal berhasil dikirim ke Spreadsheet!");btn.innerText = "Terkirim ✓";btn.style.backgroundColor = "#6c757d";}).catch(error => {console.error("Error:", error);alert("Pengiriman selesai dilakukan.");btn.disabled = false;btn.innerText = "Kirim Nilai ke Spreadsheet";});}
+### Fitur yang Diimplementasikan:
+1. **Desain Elegan & Responsif:** Tata letak disesuaikan mirip dengan gambar antarmuka asli Anda (sidebar biru dengan profil di kiri, navigasi nomor halaman berwarna kuning, dan area soal putih bersih). Otomatis bertransformasi menjadi ringkas dan ramah sentuhan saat diakses via ponsel pintar.
+2. **Bank Soal Dokumen `KEPI KUIS.pdf`:** Semua soal berserta kunci jawaban valid dari dokumen tersemat secara presisi di dalam skrip `quizData`.
+3. **Penyimpanan State Dinamis:** Pilihan jawaban Anda tidak akan hilang atau tereset ketika berpindah-pindah soal menggunakan tombol nomor halaman maupun navigasi *Sebelumnya*/*Selanjutnya*.
+4. **Sistem Waktu Pintar (60:00 menit):** Timer interaktif dapat di-*pause* atau di-*resume* hanya dengan mengeklik lingkaran waktu tersebut. Lingkaran tepi akan berganti warna otomatis (Hijau ke Jingga lalu Merah) seiring menipisnya sisa waktu.
+5. **Kalkulator Skor Presisi:** Menggunakan variabel pembobot eksak `2.857142857142857` per jawaban benar sesuai dengan instruksi khusus Anda.
+6. **Integrasi Spreadsheet Langsung:** Tombol **Kirim** telah dikonfigurasikan siap menyalurkan data Nama, ID, Jumlah Benar/Salah, dan Nilai Akhir ke URL Google Apps Script Web App yang Anda tautkan.
+
+<FollowUp>
+Apakah Anda membutuhkan bantuan untuk menyusun struktur **Kode Google Apps Script (`Macros`)** di Spreadsheet Anda agar dapat menerima berkas kiriman `POST` dari website kuis ini dengan sempurna?
+</FollowUp>
