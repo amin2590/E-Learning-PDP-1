@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Quiz MD 01 Penilaian dan Ruang Lingkup</title>
+    <!-- Font Awesome untuk Icon -->
+    <link rel="stylesheet" href="https://cloudflare.com">
+    <style>
+        :root {
+            --primary-blue: #2c7abe;
+            --dark-blue: #1d4e7a;
+            --bg-light: #f4f7f9;
+            --text-dark: #333;
+            --white: #ffffff;
+            --success: #2ec4b6;
+            --danger: #e71d36;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR STYLING */
+        .sidebar {
+            width: 260px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .sidebar-header {
+            padding: 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--dark-blue);
+        }
+
+        .profile-box {
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            background-color: rgba(0,0,0,0.1);
+        }
+
+        .profile-img {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #555;
+            font-size: 1.5rem;
+        }
+
+        .profile-info h4 {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .profile-info p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .menu-list {
+            list-style: none;
+            padding: 15px 0;
+            flex-grow: 1;
+        }
+
+        .menu-item {
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            cursor: pointer;
+        }
+
+        .menu-item.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            opacity: 1;
+            font-weight: bold;
+        }
+
+        /* TIMER BOX */
+        .timer-container {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            gap: 10px;
+        }
+
+        .circular-timer {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 8px solid var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .timer-status {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 3px 8px;
+            border-radius: 10px;
+        }
+
+        /* MAIN CONTENT AREA */
+        .main-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }
+
+        .top-navbar {
+            height: 60px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            font-weight: 600;
+        }
+
+        .quiz-container {
+            padding: 30px;
+            flex-grow: 1;
+            max-width: 1000px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .quiz-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .modules-btn {
+            display: inline-block;
+            background-color: #6c757d;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        /* KARTU SOAL PENGUJI */
+        .question-card {
+            background-color: var(--white);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            margin-bottom: 25px;
+        }
+
+        .question-text {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .options-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px 15px;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .option-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .option-item input[type="radio"] {
+            margin-top: 4px;
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary-blue);
+        }
+
+        .option-label {
+            font-size: 0.95rem;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* KOREKSI VISUAL WARNA */
+        .correct-feedback {
+            background-color: #d4edda !important;
+            border-color: #c3e6cb !important;
+            color: #155724;
+        }
+
+        .wrong-feedback {
+            background-color: #f8d7da !important;
+            border-color: #f5c6cb !important;
+            color: #721c24;
+        }
+
+        /* PAGINASI & TOMBOL BAWAH */
+        .navigation-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            background: #fff;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        .nav-btn {
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            background-color: var(--white);
+            cursor: pointer;
+            border-radius: 4px;
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .page-numbers {
+            display: flex;
+            gap: 5px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .page-num {
+            width: 35px;
+            height: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #ddd;
+            background-color: #ffffff;
+            color: #2c7abe;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+
+        .page-num.active {
+            background-color: #2c7abe !important;
+            color: white !important;
+            border-color: #1d4e7a;
+        }
+
+        .page-num.answered:not(.active) {
+            background-color: #ffcc00 !important; /* Warna kuning sesuai gambar asli */
+            color: #333 !important;
+        }
+
+        /* SUMMARY NILAI AKHIR */
+        .result-panel {
+            background-color: var(--white);
+            border: 2px solid var(--primary-blue);
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 25px;
+            display: none;
+        }
+
+        .score-display {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 15px 0;
+        }
+
+        .btn-submit-sheet {
+            background-color: #28a745;
+            color: white;
+            font-size: 1.1rem;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            .sidebar { width: 100%; }
+            .profile-box, .menu-list { display: none; }
+            .navigation-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SIDEBAR KIRI -->
+    <div class="sidebar">
+        <div class="sidebar-header"><i class="fa-solid fa-graduation-cap"></i> E-LEARNING</div>
+        <div class="profile-box">
+            <div class="profile-img"><i class="fa-solid fa-user"></i></div>
+            <div class="profile-info">
+                <h4>Amin Yansyah</h4>
+                <p>18-A-08889</p>
+            </div>
+        </div>
+        <ul class="menu-list">
+            <li class="menu-item"><i class="fa-solid fa-gauge"></i> Dashboard</li>
+            <li class="menu-item active"><i class="fa-solid fa-book"></i> All Courses</li>
+            <li class="menu-item"><i class="fa-solid fa-download"></i> Downloads</li>
+        </ul>
+        <div class="timer-container">
+            <div class="circular-timer" id="timerCircle" onclick="toggleTimer()">
+                <span id="timeString">60:00</span>
+            </div>
+            <div class="timer-status" id="timerStatusLabel">Running</div>
+        </div>
+    </div>
+
+    <!-- UTAMA -->
+    <div class="main-content">
+        <div class="top-navbar"><span><i class="fa-solid fa-bars"></i> ONLINE COURSE MAPPI</span></div>
